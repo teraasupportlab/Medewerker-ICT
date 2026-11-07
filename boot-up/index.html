@@ -5,6 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Boot up</title>
   <link rel="stylesheet" href="style.css">
+
+<style id="project-begroeting-style">
+  main { position: relative; }
+  .project-begroeting {
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    width: min(250px, 28%, 42vh);
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: contain;
+    pointer-events: none;
+    user-select: none;
+    z-index: 20;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+  }
+</style>
 </head>
 <body class="landing-page">
   <main class="landing-shell" aria-label="Startpagina Boot up">
@@ -17,5 +36,21 @@
       </span>
     </a>
   </main>
+
+<script id="project-begroeting-script">
+(() => {
+  const robot = new Image(250, 250);
+  robot.className = 'project-begroeting';
+  robot.alt = '';
+  robot.setAttribute('aria-hidden', 'true');
+  robot.onload = () => {
+    document.querySelector('main').append(robot);
+    window.setTimeout(() => robot.remove(), 3740);
+  };
+  robot.onerror = () => robot.remove();
+  // Rechtstreeks laden, ook wanneer minder beweging is ingeschakeld.
+  robot.src = "../../afbeeldingen/AAdjes/06-boot-up-begroeting.gif";
+})();
+</script>
 </body>
 </html>
