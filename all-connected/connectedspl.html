@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<title>Stichting Praktijkleren - Service Monteur</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body data-page="spl">
+
+<div class="tab-wrapper">
+
+  <section class="banner">
+    <h1>Stichting Praktijkleren</h1>
+    <p>Je werkt met drie onderdelen: Servicemonteur 1, Servicemonteur 2 en servicedesk 2022.</p>
+
+    <div class="chips">
+      <span>📘 Procedures</span>
+      <span>💬 Klantmeldingen</span>
+      <span>🏝️ Servicedesk 2022</span>
+      <span>📁 Portfolio</span>
+    </div>
+  </section>
+
+  <div class="tab-page">
+    <div class="tab-menu">
+      <button class="tab-button active" onclick="openTab(event, 'procedures')">Servicemonteur 1</button>
+      <button class="tab-button" onclick="openTab(event, 'meldingen')">Servicemonteur 2</button>
+      <button class="tab-button" onclick="openTab(event, 'servicedesk')">servicedesk 2022</button>
+      <button class="tab-button" onclick="openTab(event, 'portfolio')">Portfolio</button>
+    </div>
+
+    <div class="tab-content-area">
+
+      <div id="procedures" class="tab-content active">
+        <h2>Servicemonteur 1</h2>
+        <p>In deze lessen leer je met standaardprocedures werken. Je leert welke procedure je in een bepaalde situatie moet gebruiken en hoe je je kennis en ervaring daarbij kunt inzetten.</p>
+        <ul>
+          <li>Je herkent wanneer je een procedure nodig hebt.</li>
+          <li>Je gebruikt instructies stap voor stap.</li>
+          <li>Je zoekt antwoorden op in FAQ's.</li>
+          <li>Je legt uit waarom je een bepaalde aanpak kiest.</li>
+        </ul>
+        <p class="info"><strong>Tip:</strong> noteer voorbeelden van procedures of FAQ's die je later bij praktijkopdrachten opnieuw kunt gebruiken.</p>
+        <p><a class="action-link" href="https://www.stichtingpraktijkleren.nl/index.php?id=150862" target="_blank" rel="noopener">Open Servicemonteur 1</a></p>
+      </div>
+
+      <div id="meldingen" class="tab-content">
+        <h2>Servicemonteur 2</h2>
+        <p>In deze module ga je in iedere les met een andere melding van een klant aan de slag. De nadruk ligt op het analyseren van de melding.</p>
+        <p>Je onderzoekt hoe je duidelijk krijgt wat het probleem nu eigenlijk is. Daarbij leer je goede vragen stellen, informatie ordenen en bepalen welke vervolgstap logisch is.</p>
+        <ul>
+          <li>Je leest of beluistert de klantmelding zorgvuldig.</li>
+          <li>Je haalt de belangrijkste informatie uit de melding.</li>
+          <li>Je bepaalt welke informatie nog ontbreekt.</li>
+          <li>Je formuleert wat het echte probleem waarschijnlijk is.</li>
+        </ul>
+        <p><a class="action-link" href="https://www.stichtingpraktijkleren.nl/index.php?id=150864" target="_blank" rel="noopener">Open Servicemonteur 2</a></p>
+      </div>
+
+      <div id="servicedesk" class="tab-content">
+        <h2>servicedesk 2022</h2>
+        <p>In deze simulatieomgeving werk je als servicedeskmedewerker op het vakantie-eiland <strong>AmeRijck</strong>. Je krijgt te maken met vragen, meldingen en situaties die passen bij een ICT-servicedesk.</p>
+        <ul>
+          <li>Je oefent met realistische servicedesk-situaties.</li>
+          <li>Je bepaalt welke melding of vraag prioriteit heeft.</li>
+          <li>Je gebruikt procedures en informatiebronnen om keuzes te maken.</li>
+          <li>Je legt je oplossing of vervolgstap duidelijk vast.</li>
+        </ul>
+        <p class="info"><strong>Tip:</strong> maak screenshots van belangrijke stappen in de simulatie. Die kun je gebruiken als bewijs in je portfolio.</p>
+        <p><a class="action-link" href="https://www.stichtingpraktijkleren.nl/ict/it-systems-devices/5f34c5ca6f7fc127026cde83/" target="_blank" rel="noopener">Open servicedesk 2022</a></p>
+      </div>
+
+      <div id="portfolio" class="tab-content">
+        <h2>Portfolio-tip</h2>
+        <p>Laat in je portfolio zien dat je gestructureerd kunt werken met informatie en klantmeldingen. Bewaar niet alleen eindantwoorden, maar ook bewijs van je denkproces.</p>
+        <ul>
+          <li>Screenshot of notitie van de lessen die je hebt gemaakt.</li>
+          <li>Voorbeeld van een gebruikte procedure, instructie of FAQ.</li>
+          <li>Korte analyse van een klantmelding: wat is het probleem?</li>
+          <li>Screenshot of bewijs uit de simulatieomgeving servicedesk 2022.</li>
+          <li>Korte uitleg: welke informatie miste je nog?</li>
+          <li>Reflectie: wat ging goed en wat wil je nog oefenen?</li>
+        </ul>
+        <p class="note"><strong>Belangrijk:</strong> verzamel bewijs terwijl je werkt. Dan hoef je achteraf niet alles opnieuw op te zoeken.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+function openTab(event, tabId) {
+  document.querySelectorAll(".tab-content").forEach(function(content) {
+    content.classList.remove("active");
+  });
+
+  document.querySelectorAll(".tab-button").forEach(function(button) {
+    button.classList.remove("active");
+  });
+
+  document.getElementById(tabId).classList.add("active");
+  event.currentTarget.classList.add("active");
+}
+</script>
+
+</body>
+</html>
