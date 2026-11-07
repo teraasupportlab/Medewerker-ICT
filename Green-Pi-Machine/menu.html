@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Green Pi Machine - Startpagina</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="menu-page">
+  <main class="page-shell" aria-label="Startpagina Green Pi Machine">
+    <section class="content-grid">
+      <div class="left-column">
+        <article class="glass-card assignment-card">
+          <div class="pill"><span aria-hidden="true">📋</span><span>Context</span></div>
+          <p class="body-text">
+            In dit beroepsproject maak je kennis met het bedrijf Green Pi Machine. In het verleden deed het bedrijf alleen aan het 'refurbishen' van computers. Toen heette het nog Green  Machine. Inmiddels is het bedrijf uitgebreid met extra diensten, zoals het vernietigen van data met een certificaat en het installeren van goedkope werkplekken en servers om samen te werken. Het midden- en kleinbedrijf (MKB) is de voornaamste klant van Green Pi Machine.
+          </p>
+        </article>
+
+        <article class="glass-card outcome-card">
+          <div class="pill"><span aria-hidden="true">🎯</span><span>Leeruitkomst</span></div>
+          <h1 class="section-title">Wat laat jij aan het einde zien?</h1>
+          <p class="body-text">
+            Je gaat een werkplek inrichten.
+Je richt een Nextcloudserver in om te kunnen samenwerken.
+Je voert de voorbereidingen uit voor de opdracht van buurthuis de Hoagte en levert een werkend netwerk op.
+Je test de geïnstalleerde omgevingen.
+Je maakt instructies.
+Je geeft een eindadvies aan de directie van Green Pi Machine.
+          </p>
+          <div class="tags" aria-label="Werkprocessen">
+            <span class="tag">B1-K1-W1</span>
+            <span class="tag">B1-K1-W2</span>
+            <span class="tag">B1-K1-W3</span>
+            <span class="tag">B1-K2-W1</span>
+            <span class="tag">B1-K2-W2</span>
+          </div>
+        </article>
+      </div>
+
+      <aside class="right-column" aria-label="Navigatie">
+        <div class="section-heading">Wat ga je doen?</div>
+
+        <div class="action-list">
+          <a class="action-card popup-link" href="greenpili.html" aria-label="Open LinkedIn">
+            <div class="icon-box" aria-hidden="true">in</div>
+            <div>
+              <h2 class="action-title">Linked In</h2>
+              <p class="action-desc">Video Raspberry Pi</p>
+            </div>
+            <div class="arrow" aria-hidden="true">→</div>
+          </a>
+
+          <a class="action-card popup-link" href="greenpidagtaken.html" aria-label="Open Dagtaken">
+            <div class="icon-box" aria-hidden="true">✓</div>
+            <div>
+              <h2 class="action-title">Dagtaken</h2>
+              <p class="action-desc">Maak een keuze uit de weekly projects</p>
+            </div>
+            <div class="arrow" aria-hidden="true">→</div>
+          </a>
+
+          <a class="action-card popup-link" href="greenpispl.html" aria-label="Open Stichting Praktijkleren">
+            <div class="icon-box" aria-hidden="true">SPL</div>
+            <div>
+              <h2 class="action-title">Stichting Praktijkleren</h2>
+              <p class="action-desc">Raspberry Pi, Cloud, Azure, IoT</p>
+            </div>
+            <div class="arrow" aria-hidden="true">→</div>
+          </a>
+        </div>
+
+        <div class="section-heading">Afsluiting</div>
+
+        <a class="action-card project-card popup-link" href="greenpiberoepsproject.html" aria-label="Open Beroepsproject Green Pi">
+          <div class="icon-box" aria-hidden="true">🏆</div>
+          <div>
+            <h2 class="action-title">Beroepsproject Green Pi</h2>
+            <p class="action-desc">Lever je eindopdracht in en laat zien wat je kunt</p>
+          </div>
+          <div class="arrow" aria-hidden="true">→</div>
+        </a>
+
+        <a class="action-card self-review-card popup-link" href="greenpizelfbeoordeling.html" aria-label="Open Zelfbeoordeling Green Pi">
+          <div class="icon-box" aria-hidden="true">★</div>
+          <div>
+            <h2 class="action-title">Zelfbeoordeling</h2>
+            <p class="action-desc">Kijk terug op je eigen ontwikkeling</p>
+          </div>
+          <div class="arrow" aria-hidden="true">→</div>
+        </a>
+      </aside>
+    </section>
+  </main>
+
+  <div class="page-modal" id="pageModal" aria-hidden="true">
+    <section class="page-modal__window" role="dialog" aria-modal="true" aria-label="Lespagina Green Pi Machine">
+      <button class="page-modal__close" type="button" aria-label="Sluit pagina">×</button>
+      <iframe class="page-modal__frame" title="Lespagina Green Pi Machine" src="about:blank"></iframe>
+    </section>
+  </div>
+
+  <script>
+    const modal = document.getElementById('pageModal');
+    const modalFrame = modal.querySelector('.page-modal__frame');
+    const closeButton = modal.querySelector('.page-modal__close');
+
+    function closeModal() {
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      modalFrame.src = 'about:blank';
+    }
+
+    document.querySelectorAll('.popup-link').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        modalFrame.src = link.getAttribute('href');
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        closeButton.focus();
+      });
+    });
+
+    closeButton.addEventListener('click', closeModal);
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+    });
+  </script>
+</body>
+</html>

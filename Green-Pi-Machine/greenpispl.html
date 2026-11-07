@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<title>ICT Route - Cloud, Azure, IoT en Raspberry Pi</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body data-page="spl">
+
+<div class="tab-wrapper">
+
+  <section class="banner">
+    <h1>ICT Route: cloud, Azure, IoT en elektronica aansturen</h1>
+    <p>Je werkt aan vier onderdelen binnen de ICT-route. Je leert over cloudoplossingen, Microsoft Azure, Internet der dingen en het aansturen van elektronica met de Raspberry Pi.</p>
+
+    <div class="chips">
+      <span>☁️ Cloud</span>
+      <span>🔷 Azure</span>
+      <span>🌐 IoT</span>
+      <span>🍓 Raspberry Pi</span>
+      <span>📁 Portfolio</span>
+    </div>
+  </section>
+
+  <div class="tab-page">
+    <div class="tab-menu">
+      <button class="tab-button active" onclick="openTab(event, 'cloud')">Werken in de cloud</button>
+      <button class="tab-button" onclick="openTab(event, 'azure')">Azure AZ-900</button>
+      <button class="tab-button" onclick="openTab(event, 'iot')">Internet der dingen</button>
+      <button class="tab-button" onclick="openTab(event, 'elektronica')">Elektronica aansturen</button>
+    </div>
+
+    <div class="tab-content-area">
+
+      <div id="cloud" class="tab-content active">
+        <h2>Werken in de cloud</h2>
+        <p>In deze opdrachten leer je meer over de cloud-producten van <strong>Microsoft Office 365</strong> en <strong>Google Workspace</strong>.</p>
+        <p>Je onderzoekt hoe organisaties cloudtoepassingen gebruiken om samen te werken, bestanden te bewaren, te communiceren en veilig online te werken.</p>
+        <p>Let goed op de verschillen tussen lokaal werken en werken in de cloud. Denk aan bereikbaarheid, rechten, opslag, delen en beveiliging.</p>
+        <p class="info"><strong>Portfolio-tip:</strong> maak screenshots van instellingen, opdrachten of voorbeelden waarin je laat zien dat je cloudtoepassingen begrijpt en gebruikt.</p>
+        <p><a class="action-link" href="https://www.stichtingpraktijkleren.nl/index.php?id=203538" target="_blank" rel="noopener">Open Werken in de cloud</a></p>
+      </div>
+
+      <div id="azure" class="tab-content">
+        <h2>Microsoft Azure Fundamentals AZ-900</h2>
+        <p>Deze cursus is geschikt voor IT-medewerkers die net met <strong>Azure</strong> beginnen te werken.</p>
+        <p>Je leert meer over Azure-aanbiedingen en doet praktijkervaring op met de Azure-portal en de opdrachtregelinterface. Scriptvaardigheden zijn hiervoor niet nodig.</p>
+        <p>De cursus combineert uitleg, demonstraties en praktijklabs. Zo bouw je vertrouwen op voor vervolgcursussen en certificeringen, zoals Azure-beheerder.</p>
+        <p class="note"><strong>Belangrijk:</strong> deze cursus helpt ook bij de voorbereiding op het AZ-900-examen.</p>
+        <p><a class="action-link" href="https://learn.microsoft.com/nl-nl/training/courses/az-900t00" target="_blank" rel="noopener">Open Azure AZ-900</a></p>
+      </div>
+
+      <div id="iot" class="tab-content">
+        <h2>Internet der dingen</h2>
+        <p>In deze praktijkmodule leer je de enorme verscheidenheid aan toepassingen van <strong>IoT</strong> kennen en ontdek je hoe je ze kunt gebruiken.</p>
+        <p>In 10 lessen koppel je apparaten en sensoren via internet of andere netwerken aan elkaar. Je gaat aan de slag met technieken, toepassingen en protocollen.</p>
+        <p>Je gebruikt de Micro:bit en leert ook meer over beveiliging van IoT-apparaten, privacyregels en de maatschappelijke gevolgen van deze ontwikkelingen.</p>
+        <p class="info"><strong>Tip:</strong> bewaar voorbeelden van sensoren, verbindingen, instellingen en resultaten als bewijs voor je portfolio.</p>
+        <p><a class="action-link" href="https://www.stichtingpraktijkleren.nl/ict/uitstroomoverstijgend/5e4aa1972580491e9252a3a3/" target="_blank" rel="noopener">Open Internet der dingen</a></p>
+      </div>
+
+      <div id="elektronica" class="tab-content">
+        <h2>Elektronica aansturen</h2>
+        <p>In deze module ga je aan de slag met de <strong>Raspberry Pi</strong>. Dit apparaatje is een complete computer waarmee je elektronica kunt aansturen.</p>
+        <p>Je maakt kennis met het Linux Operating System en leert werken met digitale in- en uitgangen.</p>
+        <p>Door onderdelen aan te sluiten, instellingen te testen en resultaten vast te leggen, laat je zien dat je hardware en software met elkaar kunt verbinden.</p>
+        <p class="note"><strong>Portfolio-tip:</strong> maak foto’s van je opstelling en screenshots van instellingen, commando’s of werkende resultaten.</p>
+        <p><a class="action-link" href="https://www.stichtingpraktijkleren.nl/ict/ict-support/5e4560a7e5730d4a354ad0a7/" target="_blank" rel="noopener">Open Elektronica aansturen</a></p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+function openTab(event, tabId) {
+  document.querySelectorAll(".tab-content").forEach(function(content) {
+    content.classList.remove("active");
+  });
+
+  document.querySelectorAll(".tab-button").forEach(function(button) {
+    button.classList.remove("active");
+  });
+
+  document.getElementById(tabId).classList.add("active");
+  event.currentTarget.classList.add("active");
+}
+</script>
+
+</body>
+</html>
