@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your future in ICT</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #111827;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .pagina {
+      width: 1000px;
+      height: 500px;
+      padding: 26px 34px;
+      border-radius: 20px;
+      overflow: hidden;
+      color: white;
+      background:
+        radial-gradient(circle at 14% 16%, rgba(34,211,238,0.32), transparent 28%),
+        radial-gradient(circle at 86% 18%, rgba(168,85,247,0.34), transparent 30%),
+        radial-gradient(circle at 84% 86%, rgba(34,197,94,0.25), transparent 28%),
+        linear-gradient(135deg, #0f172a 0%, #1e1b4b 42%, #0f766e 100%);
+      box-shadow: 0 24px 55px rgba(0,0,0,0.45);
+      position: relative;
+    }
+
+    .decoratie {
+      position: absolute;
+      color: rgba(255,255,255,0.08);
+      font-weight: 900;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .decoratie.een {
+      right: 34px;
+      top: 18px;
+      font-size: 66px;
+    }
+
+    .decoratie.twee {
+      left: 40px;
+      bottom: 12px;
+      font-size: 24px;
+      letter-spacing: 4px;
+    }
+
+    .layout {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-rows: 120px 248px 70px;
+      gap: 12px;
+    }
+
+    .header {
+      display: grid;
+      grid-template-columns: 1fr 245px;
+      gap: 18px;
+      min-height: 0;
+    }
+
+    .titelvak,
+    .infovak,
+    .intro,
+    .venster,
+    .knoppen,
+    .cta {
+      overflow: hidden;
+    }
+
+    .label {
+      display: inline-block;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: #facc15;
+      color: #111827;
+      font-size: 14px;
+      font-weight: 900;
+      margin-bottom: 8px;
+      box-shadow: 4px 4px 0 rgba(0,0,0,0.22);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 44px;
+      line-height: 1;
+      text-shadow: 4px 4px 0 rgba(0,0,0,0.24);
+    }
+
+    .subtitel {
+      margin: 8px 0 0;
+      max-width: 630px;
+      font-size: 16px;
+      line-height: 1.3;
+      color: #e0f2fe;
+      font-weight: 800;
+    }
+
+    .infovak {
+      height: 120px;
+      padding: 15px;
+      border-radius: 19px;
+      background: rgba(255,255,255,0.95);
+      color: #111827;
+      box-shadow: 7px 7px 0 rgba(0,0,0,0.22);
+    }
+
+    .infovak h2 {
+      margin: 0 0 6px;
+      font-size: 22px;
+      color: #0f766e;
+    }
+
+    .infovak p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.28;
+      font-weight: 800;
+    }
+
+    .midden {
+      display: grid;
+      grid-template-columns: 310px 1fr;
+      gap: 16px;
+      min-height: 0;
+    }
+
+    .intro {
+      height: 248px;
+      padding: 19px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.96);
+      color: #111827;
+      box-shadow: 8px 8px 0 rgba(0,0,0,0.22);
+    }
+
+    .intro h2 {
+      margin: 0 0 9px;
+      font-size: 25px;
+      color: #0f766e;
+    }
+
+    .intro p {
+      margin: 0 0 10px;
+      font-size: 14.5px;
+      line-height: 1.32;
+      font-weight: 700;
+    }
+
+    .highlight {
+      margin-top: 8px;
+      padding: 9px 10px;
+      border-radius: 14px;
+      background: #dbeafe;
+      color: #1e3a8a;
+      font-size: 13px;
+      line-height: 1.25;
+      font-weight: 900;
+    }
+
+    .venster {
+      height: 248px;
+      padding: 19px;
+      border-radius: 22px;
+      background: rgba(15,23,42,0.92);
+      border: 1px solid rgba(255,255,255,0.18);
+      box-shadow: 8px 8px 0 rgba(0,0,0,0.22);
+    }
+
+    .venster-label {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #22c55e;
+      color: #052e16;
+      font-size: 12px;
+      font-weight: 900;
+      margin-bottom: 9px;
+    }
+
+    .venster h2 {
+      margin: 0 0 8px;
+      font-size: 29px;
+      line-height: 1.05;
+      color: #ffffff;
+    }
+
+    .venster p {
+      margin: 0;
+      height: 85px;
+      font-size: 15.5px;
+      line-height: 1.34;
+      font-weight: 700;
+      color: #e2e8f0;
+      overflow: hidden;
+    }
+
+    .tags {
+      margin-top: 13px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      max-height: 66px;
+      overflow: hidden;
+    }
+
+    .tag {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.13);
+      color: #d1fae5;
+      font-size: 12px;
+      font-weight: 800;
+      border: 1px solid rgba(255,255,255,0.10);
+      white-space: nowrap;
+    }
+
+    .onder {
+      display: grid;
+      grid-template-columns: 1fr 170px;
+      gap: 14px;
+      min-height: 0;
+    }
+
+    .knoppen {
+      height: 70px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-content: flex-start;
+    }
+
+    .tab {
+      height: 31px;
+      padding: 0 12px;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 12.5px;
+      font-weight: 900;
+      color: #ffffff;
+      background: rgba(255,255,255,0.17);
+      border: 1px solid rgba(255,255,255,0.18);
+      white-space: nowrap;
+    }
+
+    .tab.actief {
+      background: #facc15;
+      color: #111827;
+      border-color: #facc15;
+    }
+
+    .cta {
+      height: 62px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #22c55e, #a3e635);
+      color: #052e16;
+      font-size: 21px;
+      font-weight: 900;
+      box-shadow: 6px 6px 0 rgba(0,0,0,0.25);
+    }
+  </style>
+  <link rel="stylesheet" href="future-preload.css">
+</head>
+
+<body>
+  <main class="pagina">
+    <div class="decoratie een">&lt;/&gt;</div>
+    <div class="decoratie twee">SKILLS • PORTFOLIO • TOEKOMST</div>
+
+    <div class="layout">
+      <section class="header">
+        <div class="titelvak">
+          <div class="label">Beroepsproject • ICT</div>
+          <h1>Your future in ICT</h1>
+          <p class="subtitel">
+            Ontdek welke ICT-richting bij jou past en bouw vanaf het begin aan jouw eigen portfolio.
+          </p>
+        </div>
+
+        <div class="infovak">
+          <h2>Verken je toekomst</h2>
+          <p>Je onderzoekt wat werken in de ICT betekent en welke skills jij al hebt of nog gaat ontwikkelen.</p>
+        </div>
+      </section>
+
+      <section class="midden">
+        <article class="intro">
+          <h2>Waar gaat dit project over?</h2>
+          <p>
+            Je bent net gestart met ICT. In dit project ontdek je wat een ICT’er doet,
+            welke beroepen er zijn en wat bij jou past.
+          </p>
+          <p>
+            Je gaat aan de slag met opdrachten, skills en voorbeelden uit de echte ICT-wereld.
+          </p>
+          <div class="highlight">
+            Alles wat je maakt, kun je gebruiken voor je portfolio, stage en toekomst.
+          </div>
+        </article>
+
+        <article class="venster">
+          <div class="venster-label">Klik op een onderdeel</div>
+          <h2 id="titel">Jouw ICT-skills</h2>
+          <p id="tekst">
+            Wat kun jij al goed? Denk aan logisch nadenken, samenwerken, problemen oplossen, netjes werken en nieuwsgierig blijven.
+          </p>
+          <div class="tags" id="tags">
+            <span class="tag">onderzoeken</span>
+            <span class="tag">skills</span>
+            <span class="tag">zelfkennis</span>
+          </div>
+        </article>
+      </section>
+
+      <section class="onder">
+        <div class="knoppen">
+          <button class="tab actief" onclick="toonInfo('skills', this)">Jouw skills</button>
+          <button class="tab" onclick="toonInfo('beroepen', this)">ICT-beroepen</button>
+          <button class="tab" onclick="toonInfo('portfolio', this)">Portfolio</button>
+          <button class="tab" onclick="toonInfo('toekomst', this)">Toekomst</button>
+          <button class="tab" onclick="toonInfo('samenwerken', this)">Samenwerken</button>
+          <button class="tab" onclick="toonInfo('groeien', this)">Groeien</button>
+        </div>
+
+        <div class="cta"><a href="https://www.stichtingpraktijkleren.nl/ict/kd2024/your-future-in-it/" target="_blank" rel="noopener noreferrer">Start jouw route!</a>
+</div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const info = {
+      skills: {
+        titel: "Jouw ICT-skills",
+        tekst: "Wat kun jij al goed? Denk aan logisch nadenken, samenwerken, problemen oplossen, netjes werken en nieuwsgierig blijven.",
+        tags: ["onderzoeken", "skills", "zelfkennis"]
+      },
+      beroepen: {
+        titel: "ICT-beroepen",
+        tekst: "Je ontdekt welke banen er zijn in de ICT, zoals software developer, supportmedewerker, netwerkbeheerder of cybersecurity-specialist.",
+        tags: ["beroepen", "keuzes", "oriëntatie"]
+      },
+      portfolio: {
+        titel: "Jouw portfolio",
+        tekst: "Je verzamelt opdrachten, bewijzen en reflecties. Zo laat je zien wat je leert en waar je trots op bent.",
+        tags: ["bewijzen", "reflectie", "groei"]
+      },
+      toekomst: {
+        titel: "Jouw toekomst",
+        tekst: "Je onderzoekt welke richting in ICT bij jou past. Niet alles hoeft nu duidelijk te zijn: je gaat het stap voor stap ontdekken.",
+        tags: ["richting", "keuzes", "toekomst"]
+      },
+      samenwerken: {
+        titel: "Samenwerken",
+        tekst: "In ICT werk je vaak met anderen. Je leert uitleggen, luisteren, feedback geven en samen slimme oplossingen bedenken.",
+        tags: ["teamwork", "feedback", "communicatie"]
+      },
+      groeien: {
+        titel: "Groeien als ICT’er",
+        tekst: "Je hoeft nog niet alles te kunnen. Belangrijk is dat je blijft proberen, vragen stelt en leert van fouten.",
+        tags: ["doorzetten", "leren", "ontwikkelen"]
+      }
+    };
+
+    function toonInfo(sleutel, knop) {
+      document.getElementById("titel").textContent = info[sleutel].titel;
+      document.getElementById("tekst").textContent = info[sleutel].tekst;
+
+      const tagsContainer = document.getElementById("tags");
+      tagsContainer.innerHTML = "";
+      info[sleutel].tags.forEach(tag => {
+        const span = document.createElement("span");
+        span.className = "tag";
+        span.textContent = tag;
+        tagsContainer.appendChild(span);
+      });
+
+      document.querySelectorAll(".tab").forEach(button => button.classList.remove("actief"));
+      knop.classList.add("actief");
+    }
+  </script>
+<script src="route-nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Afspraken | Your future in ICT</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="afspraken">
+  <main class="tab-wrapper">
+    <header class="banner">
+      <h1>Afspraken in de ICT-les</h1>
+      <p>Met duidelijke afspraken kan iedereen rustig werken, leren en samenwerken. Ontdek wat Sam en Jayden meemaken.</p>
+      <div class="chips">
+        <span>Rustig werken</span>
+        <span>Veilig online</span>
+        <span>Respectvol</span>
+        <span>Samen leren</span>
+      </div>
+    </header>
+
+    <section class="tab-page">
+      <nav class="tab-menu" aria-label="Afspraken">
+        <button class="tab-button active" type="button" data-tab="telefoon">Telefoongebruik</button>
+        <button class="tab-button" type="button" data-tab="whatsapp">WhatsApp</button>
+        <button class="tab-button" type="button" data-tab="email">E-mail</button>
+        <button class="tab-button" type="button" data-tab="teams">MS Teams</button>
+      </nav>
+
+      <section class="tab-content-area">
+        <article class="tab-content active" id="telefoon">
+          <span class="badge">📱 TELEFOONGEBRUIK</span>
+          <h2>De gemiste uitleg</h2>
+          <p>Sam is op tijd in het lokaal. De docent legt uit hoe de groep vandaag een storing gaat onderzoeken. Dan komt Jayden tien minuten te laat binnen. Hij kijkt meteen op zijn telefoon en vraagt: “Wat moeten we doen?”</p>
+          <p>De docent stopt de uitleg en begint opnieuw, terwijl de rest al aan de slag wil. Jayden kijkt ondertussen nog een paar keer op zijn telefoon en mist opnieuw stukjes.</p>
+          <div class="note"><strong>Afspraak:</strong> tijdens uitleg ligt je telefoon weg of op stil. Dan weet je vanaf het begin wat je moet doen en hoeft de klas niet steeds opnieuw te wachten.</div>
+        </article>
+
+        <article class="tab-content" id="whatsapp">
+          <span class="badge">💬 WHATSAPP</span>
+          <h2>Te veel berichten</h2>
+          <p>Jayden weet nog niet waar hij moet beginnen. In plaats van Teams te openen, stuurt hij in een WhatsApp-groep: “Wat moesten we doen?” Meteen komen er grapjes, foto’s en losse reacties binnen.</p>
+          <p>Sam hoort steeds meldingen en raakt ook afgeleid. Uiteindelijk weet Jayden nog steeds niet welke stap hij moet doen. De docent legt uit dat de opdracht gewoon in Teams staat.</p>
+          <div class="note"><strong>Afspraak:</strong> WhatsApp gebruiken we niet tijdens uitleg en werktijd. Heb je hulp nodig? Vraag het rustig aan de docent of aan een klasgenoot naast je.</div>
+        </article>
+
+        <article class="tab-content" id="email">
+          <span class="badge">✉️ E-MAIL</span>
+          <h2>Een vraag die duidelijk is</h2>
+          <p>Thuis komt Sam vast te zitten bij de opdracht. Eerst wil Sam snel mailen: “Ik snap het niet, help.” Dan denkt Sam aan de les: de docent moet wel weten wie je bent, over welke opdracht het gaat en waar je vastloopt.</p>
+          <p>Sam schrijft een duidelijke onderwerpregel, begint netjes en legt kort uit bij welke stap hulp nodig is. De volgende ochtend krijgt Sam een antwoord waar echt iets mee gedaan kan worden.</p>
+          <div class="note"><strong>Afspraak:</strong> gebruik een onderwerp, een nette aanhef en beleefde taal. Controleer je bericht en open nooit zomaar verdachte links of bijlagen.</div>
+        </article>
+
+        <article class="tab-content" id="teams">
+          <span class="badge">👥 MS TEAMS</span>
+          <h2>Alles terugvinden</h2>
+          <p>De volgende les is Jayden op tijd. Hij opent MS Teams en vindt daar de uitleg van gisteren, de opdracht en de bestanden. “Had ik dit gisteren maar meteen bekeken,” zegt hij tegen Sam.</p>
+          <p>Sam helpt Jayden het juiste bestand te openen. Nu kan Jayden gewoon aansluiten en hoeft de docent niet alles opnieuw uit te leggen.</p>
+          <div class="note"><strong>Afspraak:</strong> plaats schoolzaken in het juiste kanaal, reageer netjes en houd Teams overzichtelijk. Zo kan iedereen informatie snel terugvinden.</div>
+        </article>
+      </section>
+    </section>
+  </main>
+
+  <script>
+    const buttons = document.querySelectorAll('.tab-button');
+    const panels = document.querySelectorAll('.tab-content');
+    buttons.forEach(button => button.addEventListener('click', () => {
+      buttons.forEach(item => item.classList.toggle('active', item === button));
+      panels.forEach(panel => panel.classList.toggle('active', panel.id === button.dataset.tab));
+    }));
+  </script>
+</body>
+</html>

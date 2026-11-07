@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>404 - Systeemfout</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: #050505;
+      color: #ff2b2b;
+      font-family: Consolas, monospace;
+      overflow: hidden;
+      animation: flikker 0.15s infinite;
+    }
+
+    body.stil {
+      animation: none;
+      background: #111;
+    }
+
+    @keyframes flikker {
+      0% { background: #050505; }
+      50% { background: #220000; }
+      100% { background: #050505; }
+    }
+
+    .container {
+      padding: 30px;
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      font-size: 70px;
+      margin: 0;
+      text-shadow: 0 0 20px red;
+      cursor: pointer;
+    }
+
+    .warning {
+      font-size: 26px;
+      color: yellow;
+      margin-top: 20px;
+      text-shadow: 0 0 12px yellow;
+    }
+
+    .box {
+      border: 2px solid red;
+      padding: 15px;
+      margin-top: 20px;
+      background: rgba(255, 0, 0, 0.12);
+      box-shadow: 0 0 25px red;
+      font-size: 18px;
+    }
+
+    .glitch {
+      position: absolute;
+      font-size: 18px;
+      opacity: 0.75;
+      pointer-events: none;
+      animation: beweeg 1s infinite linear;
+      z-index: 1;
+    }
+
+    body.stil .glitch {
+      animation-play-state: paused;
+    }
+
+    @keyframes beweeg {
+      from { transform: translateY(100vh); }
+      to { transform: translateY(-120vh); }
+    }
+
+    .monster {
+      position: absolute;
+      font-size: 44px;
+      z-index: 3;
+      animation: kriskras 3s linear infinite alternate;
+    }
+
+    @keyframes kriskras {
+      0%   { left: 0vw; top: 70vh; transform: rotate(0deg); }
+      20%  { left: 35vw; top: 15vh; transform: rotate(30deg); }
+      40%  { left: 80vw; top: 60vh; transform: rotate(-25deg); }
+      60%  { left: 20vw; top: 85vh; transform: rotate(45deg); }
+      80%  { left: 90vw; top: 25vh; transform: rotate(-45deg); }
+      100% { left: 10vw; top: 10vh; transform: rotate(0deg); }
+    }
+
+    .monster:nth-of-type(2) {
+      animation-duration: 4s;
+      animation-delay: .5s;
+    }
+
+    .monster:nth-of-type(3) {
+      animation-duration: 5s;
+      animation-delay: 1s;
+    }
+
+    .monster:nth-of-type(4) {
+      animation-duration: 3.5s;
+      animation-delay: 1.5s;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1 id="errorTitel">404 ERROR</h1>
+
+    <div class="warning">
+      ⚠ ONVEILIGE SITE GEDETECTEERD ⚠
+    </div>
+
+    <div class="box">
+      SYSTEM FAILURE<br>
+      ACCESS DENIED<br>
+      ERROR 404: PAGE NOT FOUND<br>
+      SECURITY WARNING<br>
+      CONNECTION UNTRUSTED<br>
+      DATA STREAM CORRUPTED<br>
+      FIREWALL BREACH DETECTED<br>
+      PAGE RECOVERY STARTED...
+    </div>
+
+    <div class="box">
+      Klik op <b>404 ERROR</b> om de verstoring te stoppen.
+    </div>
+  </div>
+
+  <div class="monster">👾</div>
+  <div class="monster">👹</div>
+  <div class="monster">🧟</div>
+  <div class="monster">👻</div>
+
+  <script>
+    const doelPagina = "https://teraa-canvas.instructure.com/courses/1250/pages/welkom-bij-ict-2?module_item_id=14308";
+    const wachttijd = 4000; // 4000 = 4 seconden
+
+    let gestopt = false;
+
+    const meldingen = [
+      "404 NOT FOUND",
+      "UNSAFE CONNECTION",
+      "CERTIFICATE ERROR",
+      "SYSTEM CRASH",
+      "ACCESS DENIED",
+      "WARNING",
+      "ERROR",
+      "SECURITY ALERT",
+      "FIREWALL ALERT",
+      "RECOVERY MODE"
+    ];
+
+    for (let i = 0; i < 45; i++) {
+      const tekst = document.createElement("div");
+      tekst.className = "glitch";
+      tekst.innerText = meldingen[Math.floor(Math.random() * meldingen.length)];
+      tekst.style.left = Math.random() * 100 + "vw";
+      tekst.style.top = Math.random() * 100 + "vh";
+      tekst.style.animationDelay = Math.random() * 2 + "s";
+      document.body.appendChild(tekst);
+    }
+
+    const doorsturen = setTimeout(() => {
+      if (!gestopt) {
+        window.top.location.href = doelPagina;
+      }
+    }, wachttijd);
+
+    document.getElementById("errorTitel").addEventListener("click", () => {
+      gestopt = true;
+      clearTimeout(doorsturen);
+      document.body.classList.add("stil");
+      document.getElementById("errorTitel").innerText = "404 GESTOPT";
+    });
+  </script>
+
+<script src="route-nav.js"></script>
+</body>
+</html>

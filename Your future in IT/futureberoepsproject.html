@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Future in IT | Your future in ICT</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* De gedeelde turquoise opmaak en dezelfde 20px lagere plaatsing. */
+    body[data-page="futureproject"] .banner { position: relative; height: calc(28% + 20px); padding-right: 215px; }
+    body[data-page="futureproject"] .tab-page { height: calc(72% - 20px); }
+    /* Tien onderdelen passen onder elkaar in het bestaande menu. */
+    body[data-page="futureproject"] .tab-button { padding-top: 5px; padding-bottom: 5px; margin-bottom: 3px; }
+    /* De oorspronkelijke projectafbeelding blijft een link naar SPL. */
+    .project-image-link { position: absolute; top: 25px; right: 35px; width: 150px; display: block; }
+    .project-image-link img { display: block; width: 150px; height: 84px; object-fit: cover; border-radius: 13px; border: 2px solid rgba(255,255,255,.86); }
+    .project-image-link:focus-visible { outline: 3px solid white; outline-offset: 4px; border-radius: 13px; }
+    @media (max-width: 760px) {
+      body[data-page="futureproject"] .banner { padding-right: 4.6%; }
+      .project-image-link { display: none; }
+    }
+  </style>
+</head>
+<body data-page="futureproject">
+  <main class="tab-wrapper">
+    <header class="banner">
+      <h1>Your Future in IT</h1>
+      <p>Ontdek wat werken in ICT betekent: jouw vaardigheden, samenwerken, plannen en toekomst. Verzamel je resultaten in je portfolio.</p>
+      <div class="chips">
+        <span>Oriënteren</span><span>ICT-vaardigheden</span><span>Samenwerken</span><span>Portfolio</span><span>Toekomst in IT</span>
+      </div>
+      <a class="project-image-link" href="https://www.stichtingpraktijkleren.nl/ict/kd2024/your-future-in-it/" target="_blank" rel="noopener" title="Open Your Future in IT bij SPL">
+<img class="banner-image" src="data:image/jpeg;base64,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" alt="Studenten werken samen aan ICT">
+      </a>
+    </header>
+    <section class="tab-page">
+      <nav class="tab-menu" aria-label="Your Future in IT onderdelen">
+        <button class="tab-button active" type="button" data-tab="succesvolle-icter">Succesvolle ICT’er</button>
+        <button class="tab-button" type="button" data-tab="ict-home">ICT@home</button>
+        <button class="tab-button" type="button" data-tab="beste-optie">De beste optie</button>
+        <button class="tab-button" type="button" data-tab="future-it">Your Future in IT</button>
+        <button class="tab-button" type="button" data-tab="profile">Rock your profile!</button>
+        <button class="tab-button" type="button" data-tab="how-to">How to</button>
+        <button class="tab-button" type="button" data-tab="teamplayer">Teamplayer?!</button>
+        <button class="tab-button" type="button" data-tab="plannen">Plannen</button>
+        <button class="tab-button" type="button" data-tab="presenteren">Presenteren</button>
+        <button class="tab-button" type="button" data-tab="portfolio">Portfolio</button>
+      </nav>
+      <section class="tab-content-area">
+        <article class="tab-content active" id="succesvolle-icter">
+        <h2>Een succesvolle ICT’er</h2>
+        <p>Je bent gestart met een opleiding in de ICT. In deze oriëntatie denk je na over wat je moet kunnen om succesvol in de ICT te werken.</p>
+        <p>Je ontdekt door het matchen van taken en vaardigheden welke vaardigheden een ICT’er nodig heeft. Ook maak je een start met jouw portfolio.</p>
+        <ul>
+          <li>Je ontdekt welke vaardigheden een ICT’er nodig heeft.</li>
+          <li>Je denkt na over hoe deze vaardigheden bij jou zijn ontwikkeld.</li>
+        </ul>
+        <p class="note"><strong>Belangrijk:</strong> kijk niet alleen naar wat je al kunt, maar ook naar wat je nog wilt leren.</p>
+        </article>
+        <article class="tab-content" id="ict-home">
+        <h2>ICT@home</h2>
+        <p>ICT is overal: onderweg, in bedrijven en bij jou thuis. In deze opdracht begin je dicht bij jezelf en onderzoek je jouw eigen ICT-thuissituatie.</p>
+        <p>Je beschrijft welke ICT je thuis gebruikt en maakt zo een begin met het vastleggen van informatie over inrichting, beheer en beveiliging.</p>
+        <ul>
+          <li>Je kunt een ICT-omgeving beschrijven.</li>
+          <li>Je gebruikt passende technische termen.</li>
+          <li>Je luistert goed naar de ander.</li>
+          <li>Je geeft een passend advies.</li>
+        </ul>
+        </article>
+        <article class="tab-content" id="beste-optie">
+        <h2>De beste optie</h2>
+        <p>Als ICT’er zoek je naar de beste oplossing voor een probleem. Vaak zijn er meerdere oplossingen mogelijk.</p>
+        <p>Dat geldt bijvoorbeeld bij computerproblemen, het configureren van apparaten of het programmeren van een applicatie.</p>
+        <p>In deze taak oefen je met het ordenen van informatie en het maken van keuzes. Je doet dit aan de hand van een computergame.</p>
+        <p class="info"><strong>Tip:</strong> een goede keuze kun je uitleggen. Verzamel dus eerst informatie voordat je beslist.</p>
+        </article>
+        <article class="tab-content" id="future-it">
+        <h2>Your Future in IT</h2>
+        <p>Mooi dat je hebt gekozen voor een ICT-opleiding. Misschien zie jij jezelf later als ICT Support medewerker, beheerder of software developer.</p>
+        <p>Je verkent jouw toekomst in de ICT. Wat verwacht je van jezelf, van je beroep en van de ICT-collega’s met wie je te maken krijgt?</p>
+        <ul>
+          <li>Je krijgt een beeld van jezelf aan de start van je opleiding.</li>
+          <li>Je krijgt een beeld van ICT-trends in je toekomstige loopbaan.</li>
+          <li>Je krijgt een beeld van je toekomstige ICT-collega’s.</li>
+          <li>Je ontdekt wat je aanspreekt in een toekomst in de ICT.</li>
+        </ul>
+        </article>
+        <article class="tab-content" id="profile">
+        <h2>Rock your profile!</h2>
+        <p>Een persoonlijk profiel helpt bij het vinden van een leuke stage- of werkplek. Via een online profiel kun je makkelijk in contact komen met bedrijven en organisaties.</p>
+        <p>Netwerken is daarbij belangrijk. Platforms zoals LinkedIn kunnen je helpen om zichtbaar te worden en contact te leggen.</p>
+        <ul>
+          <li>Je ontdekt je persoonlijke Why en welke skills je beheerst.</li>
+          <li>Je onderzoekt hoe je een interview afneemt.</li>
+          <li>Je ontdekt hoe je het best kunt netwerken.</li>
+          <li>Je denkt na over bedrijven waar je zou willen werken.</li>
+          <li>Je maakt van je persoonlijk profiel een LinkedInprofiel.</li>
+        </ul>
+        </article>
+        <article class="tab-content" id="how-to">
+        <h2>How to</h2>
+        <p>Als ICT’er moet je vaak aan een collega of gebruiker uitleggen hoe iets gedaan moet worden. Dat lijkt makkelijk, maar duidelijk opschrijven wat iemand precies moet doen is best lastig.</p>
+        <p>Je oefent dit met het uitleggen van een tangram-figuur. Daarna controleer je of jouw uitleg duidelijk genoeg is.</p>
+        <ul>
+          <li>Je kunt een duidelijke instructie maken.</li>
+          <li>Je oefent met het geven en krijgen van feedback.</li>
+        </ul>
+        <p class="note"><strong>Check:</strong> kan je medestudent het figuur leggen met alleen jouw beschrijving?</p>
+        </article>
+        <article class="tab-content" id="teamplayer">
+        <h2>Teamplayer?!</h2>
+        <p>In je toekomstige baan als ICT’er voer je zelfstandig opdrachten uit, maar werk je ook vaak samen in een team.</p>
+        <p>Naast vakkennis heb je dus ook vaardigheden nodig om samen te werken en te plannen.</p>
+        <p>Je onderzoekt of jij een teamplayer bent en ontdekt jouw sterke en zwakke punten als teamspeler.</p>
+        <ul>
+          <li>Je onderzoekt je sterke eigenschappen.</li>
+          <li>Je kijkt naar je valkuilen.</li>
+          <li>Je benoemt je uitdagingen en irritaties.</li>
+        </ul>
+        </article>
+        <article class="tab-content" id="plannen">
+        <h2>Plannen</h2>
+        <p>“Wanneer denk je dat het klaar is?” en “Heb je even voor mij?” zijn vragen die je als ICT-professional vaak krijgt.</p>
+        <p>Om goed antwoord te geven, moet je kunnen inschatten hoeveel tijd een klus kost. Door dit vaker te doen, word je er steeds beter in.</p>
+        <ul>
+          <li>Je kunt inschatten hoeveel tijd bepaalde werkzaamheden kosten.</li>
+          <li>Je kunt uitleggen waarom werkzaamheden meer of minder tijd kosten dan gepland.</li>
+        </ul>
+        <p class="info"><strong>Tip:</strong> vergelijk je inschatting achteraf met de werkelijkheid. Zo leer je realistischer plannen.</p>
+        </article>
+        <article class="tab-content" id="presenteren">
+        <h2>My Future in IT</h2>
+        <p>Je bent aan het einde van deze oriëntatie op je toekomst in de ICT en staat aan de start van je opleiding.</p>
+        <p>Je hebt onderzocht wat je beroep voor jou inhoudt, wat jou daarin aanspreekt en welke vaardigheden een ICT’er nodig heeft.</p>
+        <p>Nu laat je aan ouders, familie en vrienden zien wat jij hebt ontdekt over jezelf, jouw toekomstige beroep en je opleiding.</p>
+        <ul>
+          <li>Je presenteert je inzichten, kennis en vaardigheden.</li>
+          <li>Je geeft een realistisch beeld van de ICT-opleiding en het beroep.</li>
+          <li>Je werkt samen met medestudenten aan de organisatie van een activiteit.</li>
+          <li>Je communiceert in een team en geeft en ontvangt feedback.</li>
+        </ul>
+        </article>
+        <article class="tab-content" id="portfolio">
+        <h2>Portfolio en Vaardighedenmonitor</h2>
+        <p>Je bent aan de start van je ICT-opleiding. Wat je nu hebt onderzocht, is natuurlijk nog maar het begin.</p>
+        <p>Maak een start met het vullen van je portfolio en vul dit tijdens je opleiding steeds verder aan. Laat ook zien waar je trots op bent.</p>
+        <p>Je kijkt terug op dit oriënterende project door de Vaardighedenmonitor in te vullen. Zo zie je hoe je groeit in je ontwikkeling.</p>
+        <p class="note"><strong>Doel:</strong> je beoordeelt jezelf door het invullen van de Vaardighedenmonitor en bepaalt samen met je docent jouw volgende ontwikkelstap.</p>
+        </article>
+      </section>
+    </section>
+  </main>
+  <script>
+    const buttons = document.querySelectorAll('.tab-button');
+    const panels = document.querySelectorAll('.tab-content');
+    buttons.forEach(button => button.addEventListener('click', () => {
+      buttons.forEach(item => item.classList.toggle('active', item === button));
+      panels.forEach(panel => panel.classList.toggle('active', panel.id === button.dataset.tab));
+    }));
+  </script>
+</body>
+</html>

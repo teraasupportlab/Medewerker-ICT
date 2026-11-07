@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="nl">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Your future in ICT - Menu</title><link rel="stylesheet" href="style.css"><style>.action-card{position:relative}.action-number{position:absolute;right:1.15rem;top:50%;transform:translateY(-50%);font-size:1.15rem;font-weight:800;letter-spacing:.06em;opacity:.9}</style></head>
+<body class="menu-page future-menu">
+  <main class="page-shell" aria-label="Menu Your future in ICT">
+    <section class="content-grid">
+      <div class="left-column">
+        <article class="glass-card assignment-card"><div class="pill"><span aria-hidden="true">🚀</span><span>Jouw start</span></div><p class="body-text">In Your future in ICT ontdek je welke mogelijkheden er zijn in de ICT. Je werkt aan je eigen ontwikkeling, maakt keuzes en legt je groei vast in je portfolio.</p></article>
+        <article class="glass-card outcome-card"><div class="pill"><span aria-hidden="true">🎯</span><span>Jouw route</span></div><h1 class="section-title">Kies waar je verder wilt.</h1><p class="body-text">Alle lespagina’s staan hier bij elkaar. Met de videoknoppen onderaan een pagina kun je daarna steeds naar de vorige of volgende stap.</p><div class="tags"><span class="tag">Ontdekken</span><span class="tag">Ontwikkelen</span><span class="tag">Presenteren</span></div></article>
+      </div>
+      <aside class="right-column" aria-label="Alle pagina's">
+        <div class="section-heading">Alle pagina’s</div>
+        <div class="action-list future-all-pages">
+          <a class="action-card popup-link" href="welkom.html"><div class="icon-box">👋</div><h2 class="action-title">Welkom</h2><span class="action-number">01</span></a><a class="action-card popup-link" href="afspraken.html"><div class="icon-box">✓</div><h2 class="action-title">Afspraken</h2><span class="action-number">02</span></a><a class="action-card popup-link" href="ict.html"><div class="icon-box">ICT</div><h2 class="action-title">Wat is ICT?</h2><span class="action-number">03</span></a>
+          <a class="action-card popup-link" href="inloggen.html"><div class="icon-box">⌁</div><h2 class="action-title">Inloggen</h2><span class="action-number">04</span></a><a class="action-card popup-link" href="software.html"><div class="icon-box">365</div><h2 class="action-title">Office 365</h2><span class="action-number">05</span></a><a class="action-card popup-link" href="ziekmelden.html"><div class="icon-box">!</div><h2 class="action-title">Ziekmelden</h2><span class="action-number">06</span></a>
+          <a class="action-card popup-link" href="planning.html"><div class="icon-box">▣</div><h2 class="action-title">Planning</h2><span class="action-number">07</span></a><a class="action-card popup-link" href="sportdag.html"><div class="icon-box">⚽</div><h2 class="action-title">Sportdag</h2><span class="action-number">08</span></a><a class="action-card popup-link" href="crazy88.html"><div class="icon-box">88</div><h2 class="action-title">Crazy 88</h2><span class="action-number">09</span></a>
+          <a class="action-card popup-link" href="bp.html"><div class="icon-box">🏆</div><h2 class="action-title">Beroepsproject</h2><span class="action-number">10</span></a><a class="action-card popup-link" href="portfolio.html"><div class="icon-box">▤</div><h2 class="action-title">Portfolio</h2><span class="action-number">11</span></a><a class="action-card popup-link" href="futureberoepsproject.html"><div class="icon-box">★</div><h2 class="action-title">Your future in ICT</h2><span class="action-number">12</span></a>
+          <a class="action-card" href="https://www.stichtingpraktijkleren.nl/ict/kd2024/your-future-in-it/" target="_blank" rel="noopener"><div class="icon-box">SPL</div><h2 class="action-title">Stichting Praktijkleren</h2></a>
+        </div>
+      </aside>
+    </section>
+  </main>
+  <div class="page-modal" id="pageModal" aria-hidden="true"><section class="page-modal__window" role="dialog" aria-modal="true" aria-label="Lespagina"><button class="page-modal__close" type="button" aria-label="Sluit pagina">×</button><iframe class="page-modal__frame" title="Lespagina" src="about:blank"></iframe></section></div>
+  <script>
+    const modal=document.getElementById('pageModal'),frame=modal.querySelector('.page-modal__frame'),close=modal.querySelector('.page-modal__close');
+    const closeModal=()=>{modal.classList.remove('is-open');modal.setAttribute('aria-hidden','true');frame.src='about:blank'};
+    document.querySelectorAll('.popup-link').forEach(link=>link.addEventListener('click',event=>{event.preventDefault();frame.src=link.getAttribute('href');modal.classList.add('is-open');modal.setAttribute('aria-hidden','false');close.focus()}));
+    close.addEventListener('click',closeModal);modal.addEventListener('click',event=>{if(event.target===modal)closeModal()});document.addEventListener('keydown',event=>{if(event.key==='Escape'&&modal.classList.contains('is-open'))closeModal()});
+  </script>
+</body></html>

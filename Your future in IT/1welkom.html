@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welkom ID.26mi.a</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #111827;
+    }
+
+    .pagina {
+      width: 1000px;
+      height: 500px;
+      position: relative;
+      overflow: hidden;
+      color: white;
+      background:
+        radial-gradient(circle at 12% 22%, #38bdf8 0%, transparent 28%),
+        radial-gradient(circle at 76% 20%, #ec4899 0%, transparent 30%),
+        radial-gradient(circle at 88% 85%, #facc15 0%, transparent 35%),
+        linear-gradient(135deg, #172554, #6d28d9 42%, #f43f5e 72%, #fb923c);
+      border-radius: 18px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+    }
+
+    .decoratie {
+      position: absolute;
+      color: rgba(255,255,255,0.45);
+      font-size: 30px;
+      font-weight: bold;
+      user-select: none;
+      z-index: 1;
+    }
+
+    .decoratie.een { left: 330px; top: 40px; }
+    .decoratie.twee { right: 175px; top: 40px; }
+    .decoratie.drie { left: 475px; top: 65px; }
+    .decoratie.vier { right: 70px; bottom: 85px; }
+
+    .titelblok {
+      position: absolute;
+      left: 40px;
+      top: 35px;
+      width: 315px;
+      z-index: 3;
+    }
+
+    .label {
+      display: inline-block;
+      background: #ffd60a;
+      color: #111827;
+      padding: 7px 16px;
+      font-size: 19px;
+      font-weight: 900;
+      transform: rotate(-3deg);
+      box-shadow: 5px 5px 0 rgba(0,0,0,0.25);
+      margin-left: 18px;
+    }
+
+    h1 {
+      margin: 8px 0 0;
+      font-size: 58px;
+      line-height: 0.95;
+      text-shadow: 5px 5px 0 rgba(0,0,0,0.22);
+    }
+
+    .klas {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 9px 22px;
+      background: white;
+      color: #29125f;
+      font-size: 34px;
+      font-weight: 900;
+      border-radius: 8px;
+      box-shadow: 7px 7px 0 rgba(0,0,0,0.22);
+    }
+
+    .intro {
+      position: absolute;
+      left: 45px;
+      top: 252px;
+      width: 285px;
+      font-size: 16px;
+      line-height: 1.45;
+      font-weight: 600;
+      z-index: 3;
+    }
+
+    .laptop {
+      position: absolute;
+      left: 360px;
+      top: 125px;
+      width: 340px;
+      height: 225px;
+      z-index: 2;
+    }
+
+    .scherm {
+      position: absolute;
+      width: 340px;
+      height: 205px;
+      background: linear-gradient(145deg, #101827, #1f2937);
+      border: 11px solid #050816;
+      border-radius: 18px 18px 8px 8px;
+      box-shadow: 0 18px 35px rgba(0,0,0,0.45);
+    }
+
+    .code {
+      position: absolute;
+      left: 30px;
+      top: 30px;
+      color: #d1fae5;
+      font-family: Consolas, monospace;
+      font-size: 13px;
+      line-height: 1.55;
+      opacity: 0.65;
+    }
+
+    .toetsenbord {
+      position: absolute;
+      left: -25px;
+      top: 200px;
+      width: 390px;
+      height: 40px;
+      background: linear-gradient(#e5e7eb, #8b8fa3);
+      border-radius: 0 0 28px 28px;
+      box-shadow: 0 15px 24px rgba(0,0,0,0.35);
+    }
+
+    .tekstblok {
+      position: absolute;
+      left: 385px;
+      top: 150px;
+      width: 290px;
+      min-height: 145px;
+      padding: 20px;
+      z-index: 5;
+      background: rgba(10, 10, 30, 0.74);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      transition: 0.25s ease;
+    }
+
+    .tekstblok h2 {
+      margin: 0 0 10px;
+      font-size: 26px;
+      color: #c084fc;
+    }
+
+    .tekstblok p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.42;
+    }
+
+    .lijst {
+      position: absolute;
+      right: 45px;
+      top: 60px;
+      width: 235px;
+      padding: 20px;
+      color: #1f2937;
+      background: rgba(255,255,255,0.90);
+      border-radius: 18px;
+      transform: rotate(-2deg);
+      box-shadow: 10px 12px 0 rgba(0,0,0,0.18);
+      z-index: 3;
+    }
+
+    .lijst h3 {
+      margin: 0 0 12px;
+      font-size: 23px;
+    }
+
+    .lijst p {
+      margin: 9px 0;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .knoppen {
+      position: absolute;
+      left: 45px;
+      bottom: 24px;
+      width: 910px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      z-index: 8;
+    }
+
+    .knoppen button {
+      height: 66px;
+      border: 2px solid rgba(255,255,255,0.35);
+      border-radius: 18px;
+      color: white;
+      font-size: 17px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 10px 22px rgba(0,0,0,0.25);
+      transition: 0.2s;
+      white-space: nowrap;
+    }
+
+    .knoppen button:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 16px 28px rgba(0,0,0,0.35);
+    }
+
+    .knoppen button.actief {
+      outline: 4px solid rgba(255,255,255,0.8);
+      transform: translateY(-3px);
+    }
+
+    .paars { background: linear-gradient(135deg, #7c3aed, #d946ef); }
+    .blauw { background: linear-gradient(135deg, #0284c7, #2563eb); }
+    .groen { background: linear-gradient(135deg, #16a34a, #84cc16); }
+    .oranje { background: linear-gradient(135deg, #f97316, #facc15); }
+
+    .toekomst {
+      position: absolute;
+      right: 72px;
+      bottom: 120px;
+      width: 175px;
+      padding: 18px 14px;
+      background: #111827;
+      color: #67e8f9;
+      border-radius: 16px;
+      text-align: center;
+      font-size: 22px;
+      font-weight: 700;
+      transform: rotate(4deg);
+      box-shadow: 8px 10px 0 rgba(0,0,0,0.25);
+      z-index: 4;
+    }
+  </style>
+  <link rel="stylesheet" href="future-preload.css">
+</head>
+
+<body>
+  <main class="pagina">
+    <div class="decoratie een">&lt;/&gt;</div>
+    <div class="decoratie twee">☁</div>
+    <div class="decoratie drie">⌘</div>
+    <div class="decoratie vier">⚡</div>
+
+    <section class="titelblok">
+      <div class="label">HEY JIJ!</div>
+      <h1>Welkom!</h1>
+      <div class="klas">ID.26mi.a</div>
+    </section>
+
+    <p class="intro">
+      Ontdekken
+
+Het eerste storinkje
+
+Het was maandagochtend, kwart voor negen. Sam stond voor de deur van lokaal 2.14 met een rugzak vol goede voornemens en een telefoon met nog maar 12% batterij. Dat begint goed, dacht Sam, en grijnsde.
+
+Binnen zat al een groepje studenten. Sommigen kenden elkaar al van de open dag, anderen staarden net als Sam een beetje onwennig naar hun scherm. Aan het einde van het lokaal stond een docent met een kop koffie en een rustige glimlach.
+
+"Welkom," zei hij. "Jullie zijn vanaf vandaag de ICT-medewerkers support van de toekomst. Maar voordat ik iets uitleg, heb ik een probleem. De beamer doet het niet."
+
+Het werd stil. Iedereen keek naar het witte scherm, waarop alleen een melding stond: Geen signaal.
+
+"Wie wil het proberen?"
+
+Even bewoog niemand. Toen stak Sam aarzelend een hand op.
+
+De eerste stap: kijken
+
+Sam liep naar voren en deed wat niemand had verwacht: niets. Sam keek eerst gewoon.
+
+Staat de beamer aan? Ja, het lampje brandt groen.
+Zit er een kabel in? Ja, een HDMI-kabel.
+Waar zit het andere eind? In de laptop van de docent.
+Staat de laptop op het juiste scherm? Hmm…
+
+"Mag ik even?" vroeg Sam, en drukte op de Windows-toets + P. Een klein menu verscheen. Sam koos Dupliceren, en het scherm lichtte op. Applaus klonk door het lokaal.
+
+De docent knikte. "Wat deed je als eerste?"
+
+"Eigenlijk gewoon kijken en vragen stellen," zei Sam.
+
+"Precies. Dat is het begin van alles wat je hier gaat leren."
+
+Wat jij gaat ontdekken
+
+In de weken en maanden die komen ga je ontdekken dat ICT-support niet draait om alles al weten. Het draait om nieuwsgierig zijn, goed luisteren en stap voor stap zoeken naar een oplossing. Je ontdekt bijvoorbeeld:
+
+- Hoe computers en netwerken werken. Wat gebeurt er eigenlijk als je op een link klikt?
+- Hoe je problemen aanpakt. Je leert een storing te onderzoeken in plaats van maar wat te proberen.
+- Hoe je met mensen omgaat. Een gebruiker die zegt "mijn computer is kapot" bedoelt vaak iets heel anders. Goed doorvragen is een vak apart.
+- Wie jij bent als professional. Waar ben je goed in, wat vind je leuk, en welke kant wil je op?
+
+En ja, je gaat fouten maken. Dat hoort erbij. Elke ervaren systeembeheerder heeft ooit per ongeluk de verkeerde server herstart. Het verschil zit in wat je ervan leert.
+
+Jouw eerste opdracht
+
+Aan het einde van de les vroeg de docent iedereen om een briefje te pakken.
+
+"Schrijf op wat je het meest benieuwd naar bent in deze opleiding. En schrijf er één ding bij waar je tegenop ziet. Dat is gewoon voor jezelf. Over een paar maanden kijken we er samen weer naar."
+
+Sam dacht even na en schreef:
+
+Benieuwd naar: hoe je weet waar een probleem zit.
+Zie tegenop: dat ik iets niet weet als iemand mij om hulp vraagt.
+
+Sam vouwde het briefje op, stopte het in de rugzak en liep het lokaal uit. De telefoon stond inmiddels op 4%, maar dat gaf niet. Dit was pas het begin.
+
+Aan de slag
+
+Wat deed Sam anders dan je misschien zou verwachten?
+Waar ben jij het meest benieuwd naar in deze opleiding?
+Waar zie jij tegenop? Schrijf het op en bewaar het goed.
+
+Welkom bij de opleiding. Het ontdekken begint nu. 🚀
+
+Wil je dat ik het verhaal aanpas, bijvoorbeeld korter, informeler of met een andere hoofdpersoon? Dan pas ik het aan.
+    </p>
+
+    <section class="laptop">
+      <div class="scherm">
+        <div class="code">
+          &lt;html&gt;<br>
+          &nbsp;&nbsp;&lt;head&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;Jouw toekomst&lt;/title&gt;<br>
+          &nbsp;&nbsp;&lt;/head&gt;<br>
+          &nbsp;&nbsp;&lt;body&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;Welkom!&lt;/h1&gt;<br>
+          &nbsp;&nbsp;&lt;/body&gt;<br>
+          &lt;/html&gt;
+        </div>
+      </div>
+      <div class="toetsenbord"></div>
+    </section>
+
+    <section class="tekstblok" id="tekstblok">
+      <h2 id="blokTitel">Ontdekken</h2>
+      <p id="blokTekst">
+        Je ontdekt nieuwe technologieën en tools die je nodig hebt in de wereld van ICT.
+        Van netwerken tot webdesign en van hardware tot slimme software.
+      </p>
+    </section>
+
+    <section class="lijst">
+      <h3>Wat ga je doen?</h3>
+      <p>✅ Websites maken</p>
+      <p>✅ Programmeren</p>
+      <p>✅ Netwerken ontdekken</p>
+      <p>✅ Samenwerken</p>
+    </section>
+
+    <div class="toekomst">Jouw toekomst<br>begint hier!</div>
+
+    <nav class="knoppen">
+      <button class="paars actief" onclick="toonInfo('ontdekken', this)">💻 Ontdekken</button>
+      <button class="blauw" onclick="toonInfo('maken', this)">⌨️ Maken</button>
+      <button class="groen" onclick="toonInfo('samenwerken', this)">🤝 Samenwerken</button>
+      <button class="oranje" onclick="toonInfo('groeien', this)">🚀 Groeien</button>
+    </nav>
+  </main>
+
+  <script>
+    const informatie = {
+      ontdekken: {
+        titel: "Ontdekken",
+        tekst: "Je ontdekt nieuwe technologieën en tools die je nodig hebt in de wereld van ICT. Van netwerken tot webdesign en van hardware tot slimme software."
+      },
+      maken: {
+        titel: "Maken",
+        tekst: "Je gaat zelf aan de slag met websites, code en creatieve projecten. Stap voor stap bouw je iets waar je trots op kunt zijn."
+      },
+      samenwerken: {
+        titel: "Samenwerken",
+        tekst: "In ICT werk je vaak samen. Je helpt elkaar, verdeelt taken en leert hoe je samen slimme oplossingen bedenkt."
+      },
+      groeien: {
+        titel: "Groeien",
+        tekst: "Elke opdracht maakt je beter. Je leert fouten oplossen, doorzetten en steeds zelfstandiger werken aan jouw toekomst in ICT."
+      }
+    };
+
+    function toonInfo(keuze, knop) {
+      document.getElementById("blokTitel").textContent = informatie[keuze].titel;
+      document.getElementById("blokTekst").textContent = informatie[keuze].tekst;
+
+      const alleKnoppen = document.querySelectorAll(".knoppen button");
+      alleKnoppen.forEach(button => button.classList.remove("actief"));
+      knop.classList.add("actief");
+    }
+  </script>
+<script src="route-nav.js"></script>
+</body>
+</html>

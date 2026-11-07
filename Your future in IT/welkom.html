@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welkom | Your future in ICT</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="welkom">
+  <main class="tab-wrapper">
+    <header class="banner">
+      <h1>Welkom bij Your future in ICT</h1>
+      <p>Je hoeft nog niet alles te weten. Je leert kijken, vragen stellen en stap voor stap een oplossing vinden.</p>
+      <div class="chips">
+        <span>Klas ID.26mi.a</span>
+        <span>Ontdekken</span>
+        <span>Samen leren</span>
+        <span>Groeien</span>
+      </div>
+    </header>
+
+    <section class="tab-page">
+      <nav class="tab-menu" aria-label="Welkom onderdelen">
+        <button class="tab-button active" type="button" data-tab="welkom">Welkom</button>
+        <button class="tab-button" type="button" data-tab="verhaal">Het eerste storinkje</button>
+        <button class="tab-button" type="button" data-tab="kijken">Eerst kijken</button>
+        <button class="tab-button" type="button" data-tab="ontdekken">Wat ontdek je?</button>
+        <button class="tab-button" type="button" data-tab="opdracht">Jouw start</button>
+      </nav>
+
+      <section class="tab-content-area">
+        <article class="tab-content active" id="welkom">
+          <span class="badge">JOUW START</span>
+          <h2>Welkom!</h2>
+          <p>Vanaf vandaag ben je bezig met jouw toekomst in ICT. Je gaat ontdekken wat je leuk vindt, waar je goed in bent en hoe je anderen met ICT kunt helpen.</p>
+          <div class="note"><strong>Belangrijk:</strong> je hoeft nog niet alles te kennen. Nieuwsgierig zijn en vragen stellen is een prima begin.</div>
+          <p>Kies links een onderdeel om het verhaal van Sam en jouw eerste opdracht te bekijken.</p>
+        </article>
+
+        <article class="tab-content" id="verhaal">
+          <span class="badge">HET VERHAAL VAN SAM</span>
+          <h2>Het eerste storinkje</h2>
+          <p>Maandagochtend, kwart voor negen. Sam staat voor lokaal 2.14 met een rugzak vol goede voornemens en een telefoon met nog maar 12% batterij.</p>
+          <p>De docent heeft een probleem: de beamer doet het niet. Op het scherm staat alleen: <strong>Geen signaal.</strong> Wie wil het proberen?</p>
+          <div class="note">Sam steekt aarzelend een hand op.</div>
+        </article>
+
+        <article class="tab-content" id="kijken">
+          <span class="badge">STAP 1</span>
+          <h2>De eerste stap: kijken</h2>
+          <p>Sam loopt naar voren en doet iets wat niemand verwacht: eerst niets. Sam kijkt gewoon goed.</p>
+          <ul>
+            <li>Staat de beamer aan?</li>
+            <li>Zit de HDMI-kabel goed vast?</li>
+            <li>Zit de andere kant in de laptop?</li>
+            <li>Staat de laptop op het juiste scherm?</li>
+          </ul>
+          <div class="note">Sam kiest met <strong>Windows-toets + P</strong> voor <strong>Dupliceren</strong>. Het scherm licht op.</div>
+        </article>
+
+        <article class="tab-content" id="ontdekken">
+          <span class="badge">JOUW OPLEIDING</span>
+          <h2>Wat jij gaat ontdekken</h2>
+          <ul>
+            <li>Hoe computers en netwerken werken.</li>
+            <li>Hoe je een storing onderzoekt.</li>
+            <li>Hoe je gebruikers goed helpt.</li>
+            <li>Welke ICT-kant bij jou past.</li>
+          </ul>
+          <p>Fouten maken hoort erbij. Elke fout vertelt je iets over je volgende stap.</p>
+        </article>
+
+        <article class="tab-content" id="opdracht">
+          <span class="badge">JOUW EERSTE OPDRACHT</span>
+          <h2>Waar ben jij benieuwd naar?</h2>
+          <p>Schrijf voor jezelf op wat je het meest wilt ontdekken in deze opleiding. Schrijf ook één ding op waar je tegenop ziet.</p>
+          <div class="info"><strong>Benieuwd naar:</strong> wat wil jij graag leren?</div>
+          <div class="info"><strong>Zie tegenop:</strong> wat vind je spannend?</div>
+          <p>Bewaar het goed. Over een paar maanden kijk je terug hoeveel je al hebt geleerd.</p>
+        </article>
+      </section>
+    </section>
+  </main>
+
+  <script>
+    const buttons = document.querySelectorAll('.tab-button');
+    const panels = document.querySelectorAll('.tab-content');
+    buttons.forEach(button => button.addEventListener('click', () => {
+      buttons.forEach(item => item.classList.toggle('active', item === button));
+      panels.forEach(panel => panel.classList.toggle('active', panel.id === button.dataset.tab));
+    }));
+  </script>
+</body>
+</html>

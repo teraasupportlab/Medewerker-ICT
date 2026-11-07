@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wat is ICT? | Your future in ICT</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="ict">
+  <main class="tab-wrapper">
+    <header class="banner">
+      <h1>Wat betekent ICT eigenlijk?</h1>
+      <p>Sam merkt dat ICT veel meer is dan alleen computers. Ontdek stap voor stap waar de letters I, C en T voor staan.</p>
+      <div class="chips">
+        <span>Informatie</span>
+        <span>Communicatie</span>
+        <span>Technologie</span>
+        <span>Samen oplossen</span>
+      </div>
+    </header>
+
+    <section class="tab-page">
+      <nav class="tab-menu" aria-label="ICT onderdelen">
+        <button class="tab-button active" type="button" data-tab="start">Wat is ICT?</button>
+        <button class="tab-button" type="button" data-tab="informatie">I = Informatie</button>
+        <button class="tab-button" type="button" data-tab="communicatie">C = Communicatie</button>
+        <button class="tab-button" type="button" data-tab="technologie">T = Technologie</button>
+        <button class="tab-button" type="button" data-tab="samen">Alles samen</button>
+      </nav>
+
+      <section class="tab-content-area">
+        <article class="tab-content active" id="start">
+          <span class="badge">HET VERHAAL VAN SAM</span>
+          <h2>Meer dan alleen computers</h2>
+          <p>Na het oplossen van het probleem met de beamer denkt Sam dat ICT vooral gaat over computers, kabels en schermen. Maar tijdens de volgende les zegt de docent: “ICT zit bijna overal om je heen.”</p>
+          <p>Sam kijkt om zich heen. Op het bord staat de planning, iedereen werkt in Teams en via wifi zijn alle laptops verbonden met het netwerk.</p>
+          <div class="note"><strong>ICT</strong> staat voor <strong>Informatie- en Communicatietechnologie</strong>. De drie letters horen bij elkaar.</div>
+        </article>
+
+        <article class="tab-content" id="informatie">
+          <span class="badge">I = INFORMATIE</span>
+          <h2>De bestanden van Sam</h2>
+          <p>Sam maakt een verslag van de storing met de beamer. Hij noteert bijvoorbeeld het tijdstip, het lokaalnummer, de melding <strong>“Geen signaal”</strong> en welke kabel was aangesloten. Dat zijn losse <strong>gegevens</strong>.</p>
+          <p>Gegevens zijn losse feiten, cijfers, woorden of metingen. Pas wanneer je die gegevens bij elkaar zet en er betekenis aan geeft, ontstaat <strong>informatie</strong>. Het lokaalnummer alleen zegt bijvoorbeeld nog weinig. Maar als er staat: “In lokaal 2.14 werkt de beamer niet omdat de HDMI-kabel los zit”, dan heb je bruikbare informatie.</p>
+          <p>In ICT werk je daarom veel met gegevens én informatie. Je verzamelt gegevens, controleert ze, slaat ze op en gebruikt ze om een probleem te begrijpen of een beslissing te nemen.</p>
+          <div class="note"><strong>Onthoud:</strong> gegevens zijn losse feiten. Informatie ontstaat wanneer die gegevens samen betekenis krijgen.</div>
+        </article>
+
+        <article class="tab-content" id="communicatie">
+          <span class="badge">C = COMMUNICATIE</span>
+          <h2>Informatie moet ergens naartoe</h2>
+          <p>Sam deelt zijn verslag met de docent via Teams. Dat is <strong>digitale communicatie</strong>: informatie uitwisselen via een netwerk.</p>
+          <p>Ook <strong>spreken en luisteren</strong> zijn communicatie. Sam stelt een gebruiker vragen en legt rustig uit wat hij doet.</p>
+          <p>Bij <strong>non-verbale communicatie</strong> gebruik je geen woorden, maar bijvoorbeeld oogcontact, je houding of gebaren. Als Sam wegkijkt en zijn armen over elkaar houdt, kan hij ongeïnteresseerd overkomen.</p>
+          <div class="note"><strong>Onthoud:</strong> communiceer duidelijk en rustig. Let op wat je zegt én op wat je houding laat zien.</div>
+        </article>
+
+        <article class="tab-content" id="technologie">
+          <span class="badge">T = TECHNOLOGIE</span>
+          <h2>Wat maakt dat mogelijk?</h2>
+          <p>Sam kijkt nu anders naar het lokaal. De laptop, het wifi-accesspoint, de switch, de beamer, het besturingssysteem en Teams werken allemaal samen.</p>
+          <p>Dat is de <strong>technologie</strong>: alle technische hulpmiddelen die nodig zijn om gegevens te verwerken, informatie te bewaren en communicatie mogelijk te maken.</p>
+          <p>Technologie gaat dus niet alleen over apparaten. Ook software, netwerken, apps, servers en instellingen horen erbij. Als één onderdeel niet goed werkt, kan dat gevolgen hebben voor de rest.</p>
+          <div class="note"><strong>Onthoud:</strong> technologie bestaat uit hardware, software en netwerken die samen ICT mogelijk maken.</div>
+        </article>
+
+        <article class="tab-content" id="samen">
+          <span class="badge">ICT IN DE PRAKTIJK</span>
+          <h2>Alles komt samen</h2>
+          <p>Een gebruiker kan een bestand niet openen. Sam verzamelt de bestandsnaam en foutmelding: losse <strong>gegevens</strong>. Door ze samen te bekijken, krijgt hij <strong>informatie</strong> over het probleem.</p>
+          <p>Sam stelt vragen, luistert en let op de reactie van de gebruiker. Dat is <strong>communicatie</strong>.</p>
+          <p>Met de laptop, het netwerk en software lost Sam het probleem op. Dat is de <strong>technologie</strong>. Zo komen de drie onderdelen van ICT samen.</p>
+          <div class="info"><strong>Dus:</strong> Sam gebruikt informatie om het probleem te begrijpen, communicatie om de gebruiker te helpen en technologie om het op te lossen.</div>
+        </article>
+      </section>
+    </section>
+  </main>
+
+  <script>
+    const buttons = document.querySelectorAll('.tab-button');
+    const panels = document.querySelectorAll('.tab-content');
+
+    buttons.forEach(button => button.addEventListener('click', () => {
+      buttons.forEach(item => item.classList.toggle('active', item === button));
+      panels.forEach(panel => panel.classList.toggle('active', panel.id === button.dataset.tab));
+    }));
+  </script>
+</body>
+</html>
