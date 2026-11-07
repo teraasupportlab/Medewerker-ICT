@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<title>Stichting Praktijkleren - telefoneren en TOPdesk</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body data-page="spl">
+
+<div class="tab-wrapper">
+
+  <section class="banner">
+    <h1>Stichting Praktijkleren</h1>
+    <p>Je werkt met twee onderdelen: telefoneren als een professional en TOPdesk leermiddelen. Je oefent met professioneel telefoneren en leert werken met modules binnen TOPdesk.</p>
+
+    <div class="chips">
+      <span>☎️ Professioneel telefoneren</span>
+      <span>💬 Klantcontact</span>
+      <span>🧰 TOPdesk</span>
+      <span>📁 Portfolio</span>
+    </div>
+  </section>
+
+  <div class="tab-page">
+    <div class="tab-menu">
+      <button class="tab-button active" onclick="openTab(event, 'Telefoneren')">Telefoneren</button>
+      <button class="tab-button" onclick="openTab(event, 'topdesk')">TOPdesk</button>
+      <button class="tab-button" onclick="openTab(event, 'portfolio')">Portfolio</button>
+    </div>
+
+    <div class="tab-content-area">
+
+      <div id="Telefoneren" class="tab-content active">
+        <h2>Telefoneren als een professional</h2>
+        <p>Of je nu in je dagelijks leven veel, weinig of niet belt: in je werk als ICT'er en tijdens je stage moet je telefoneren.</p>
+        <p>In dit onderdeel denk je na over werksituaties waarin je moet bellen. Denk aan contact met klanten, overleggen met collega's of informatie opvragen bij een bedrijf.</p>
+        <ul>
+          <li>Je oefent met professioneel en duidelijk communiceren.</li>
+          <li>Je leert wanneer bellen handig of nodig is.</li>
+          <li>Je denkt na over voorbereiding, toon en gespreksopbouw.</li>
+          <li>Je gebruikt klantgerichte taal tijdens een telefoongesprek.</li>
+        </ul>
+        <p class="info"><strong>Tip:</strong> maak een kort belscript of stappenplan dat je later bij een praktijkopdracht kunt gebruiken.</p>
+        <p><a class="action-link" href="https://www.stichtingpraktijkleren.nl/index.php?id=200101#top" target="_blank" rel="noopener">Open Telefoneren als een professional</a></p>
+      </div>
+
+      <div id="topdesk" class="tab-content">
+        <h2>TOPdesk leermiddelen</h2>
+        <p>Tijdens deze cursus werk je in modules aan onderdelen van TOPdesk. Zo leer je het programma kennen.</p>
+        <p>Als je door de modules van TOPdesk heen gaat, ontdek je veel mogelijkheden. Je oefent stap voor stap met onderdelen die je later in servicedesk- of ICT-praktijksituaties kunt gebruiken.</p>
+        <ul>
+          <li>Je maakt kennis met de mogelijkheden van TOPdesk.</li>
+          <li>Je werkt module voor module aan verschillende onderdelen.</li>
+          <li>Je leert informatie opzoeken, vastleggen en verwerken.</li>
+          <li>Je koppelt de oefeningen aan servicedeskwerk en klantmeldingen.</li>
+        </ul>
+        <p class="info"><strong>Tip:</strong> maak screenshots van afgeronde modules of belangrijke stappen. Die kun je gebruiken als bewijs in je portfolio.</p>
+        <p><a class="action-link" href="https://www.stichtingpraktijkleren.nl/index.php?id=206515&ADMCMD_simUser=5019,5020,5021,5022,5023,5024,5025,5045,5258,5444,5449,6079,6227,6253,6264,6366,6440,6441,6442,6471,6479,6547,6637,6638,6990,7121,7247,7343,7754,7994" target="_blank" rel="noopener">Open TOPdesk leermiddelen</a></p>
+      </div>
+
+      <div id="portfolio" class="tab-content">
+        <h2>Portfolio-tip</h2>
+        <p>Laat in je portfolio zien dat je professioneel kunt communiceren en dat je kunt werken met TOPdesk-leermiddelen.</p>
+        <ul>
+          <li>Screenshot of notitie van het onderdeel Telefoneren als een professional.</li>
+          <li>Een kort belscript of gespreksvoorbereiding.</li>
+          <li>Screenshot van een TOPdesk-module of voortgang.</li>
+          <li>Korte uitleg van wat je hebt geleerd over professioneel klantcontact.</li>
+          <li>Reflectie: wat ging goed en wat wil je nog oefenen?</li>
+        </ul>
+        <p class="note"><strong>Belangrijk:</strong> verzamel bewijs terwijl je werkt. Dan hoef je achteraf niet alles opnieuw op te zoeken.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+function openTab(event, tabId) {
+  document.querySelectorAll(".tab-content").forEach(function(content) {
+    content.classList.remove("active");
+  });
+
+  document.querySelectorAll(".tab-button").forEach(function(button) {
+    button.classList.remove("active");
+  });
+
+  document.getElementById(tabId).classList.add("active");
+  event.currentTarget.classList.add("active");
+}
+</script>
+
+</body>
+</html>

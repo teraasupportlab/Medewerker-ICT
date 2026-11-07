@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<title>Praktijk Dagtaken Periode 6</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="dagtaken">
+<div class="tab-wrapper">
+  <section class="banner">
+    <div class="banner-row">
+      <div class="banner-text"><h1>Praktijk Dagtaken Periode 6</h1></div>
+      <div class="task-picker"><select id="taskSelect" aria-label="Kies een dagtaak" onchange="loadTask(this.value)"></select></div>
+    </div>
+    <div class="helper-row">
+      <div class="chips">
+        <span>☎️ Servicedesk</span>
+        <span>🧰 TOPdesk</span>
+        <span>📄 SLA</span>
+        <span>📁 Portfolio</span>
+        <span>✅ Bewijs</span>
+      </div>
+      <a class="helper-button" href="hulpbestanden.zip" download>Hulpbestanden</a>
+    </div>
+  </section>
+  <div class="tab-page">
+    <div class="tab-menu" id="stepMenu"></div>
+    <div class="tab-content-area">
+      <div class="tab-content active" id="contentPanel"></div>
+    </div>
+  </div>
+</div>
+<script>
+const tasks = [{"id": "p601", "title": "P6.01 Servicedesk – Dag 1: Realistische cases", "sections": [{"title": "P6.01 Servicedesk – Dag 1 – Realistische cases", "menuLabel": "Start opdracht", "kind": "normal", "items": ["Je werkt als servicedeskmedewerker op een ICT-afdeling. Gedurende je dienst krijg je verschillende meldingen van gebruikers. Analyseer, prioriteer en handel ze correct af.", "Wat ga je oefenen?", "Werken volgens een echte servicedeskprocedure en prioriteiten bepalen", "Technische meldingen analyseren en oplossen, inclusief hardware- en softwareproblemen", "Duidelijke communicatie met gebruikers over de oplossing", "Correcte registratie van meldingen in TOPdesk"]}, {"title": "Links", "menuLabel": "TOPdesk", "kind": "links", "items": []}, {"title": "Binnengekomen meldingen", "menuLabel": "Meldingen verwerken", "kind": "cards", "items": ["Registreer de meldingen in TOPdesk. Aantal meldingen: 5.", "Chris Limbach | Kan ik een Word-bestand opslaan als .PDF? Hoe doe ik dat?", "Inge Meijer | Hoe verander ik de taalinstellingen op mijn laptop?", "Benno Richters | Ik krijg heel veel e-mails in Outlook. Kan ik instellen dat e-mails van één afzender automatisch in een aparte map terechtkomen?", "Chris Limbach | Ik heb in Excel een formule ingevoerd om bedragen bij elkaar op te tellen, maar er komt 0 of een foutmelding te staan. Wat doe ik verkeerd?", "Inge Meijer | Als ik mijn PowerPoint open, zie ik alleen dia's in bewerkmodus. Hoe kan ik de presentatie meteen starten zoals bij een echte presentatie?"]}, {"title": "Werkwijze", "menuLabel": "Werkwijze", "kind": "normal", "items": ["Lees of beluister de melding rustig.", "Zoek de gebruiker, het object en de mogelijke oorzaak op.", "Gebruik de SLA om urgentie, impact en prioriteit te bepalen.", "Registreer de melding netjes en volledig in TOPdesk.", "Noteer wat je hebt gedaan en welke vervolgstap nodig is."]}, {"title": "Afronding", "menuLabel": "Afronding", "kind": "normal", "items": [["Registreer alle meldingen correct in TOPdesk", "Sla de meldingen als .PDF op in je portfolio-map"], "Controleer of de registratie duidelijk genoeg is voor een collega.", "Bewaar bewijs voor je portfolio."]}, {"title": "Portfolio-bewijs", "menuLabel": "Portfolio-bewijs", "kind": "normal", "items": ["Screenshot of export van je TOPdesk-registraties.", "Korte uitleg waarom je de gekozen prioriteit hebt gebruikt.", "Voorbeeld van een nette communicatie naar de gebruiker.", "Reflectie: wat ging goed, wat was lastig en wat doe je volgende keer anders?"]}]}, {"id": "p602", "title": "P6.02 Servicedesk – Dag 2: Drukke start van de werkdag", "sections": [{"title": "P6.02 Servicedesk – Dag 2 – Drukke start van de werkdag", "menuLabel": "Start opdracht", "kind": "normal", "items": ["Welkom terug op de servicedesk! Je hebt je eerste dag overleefd en vandaag wordt het drukker. Er zijn 8 nieuwe meldingen binnengekomen via de telefoon.", "Wat ga je oefenen?", "Werken onder tijdsdruk op een realistische servicedesk", "Analyseren, prioriteren en verwerken van 8 meldingen volgens SLA en procedures", "Correcte registratie in TOPdesk en professionele communicatie met gebruikers"]}, {"title": "Links", "menuLabel": "TOPdesk", "kind": "links", "items": []}, {"title": "Binnengekomen meldingen", "menuLabel": "Telefoontjes verwerken", "kind": "cards", "items": ["Registreer de meldingen in TOPdesk. Aantal meldingen: 8.", "Pieter de Groot | De taal van mijn toetsenbord staat niet goed ingesteld. Wat kan ik doen?", "Camilo van Trijp | Als ik een Word-bestand open, wordt het geopend in een ander programma. Hoe stel ik in dat bestanden standaard met Word worden geopend?", "Jeroen Versloot | Ik moet een verslag inleveren met een inhoudsopgave. Kan Word die automatisch voor mij maken en bijwerken?", "Marcel Offermans | Hoe stel ik een standaardprinter in op mijn computer?", "Michael Kraft | In Excel zie ik niet alle tekst in de cellen, een deel valt weg. Hoe kan ik zorgen dat alles zichtbaar wordt?", "Pieter de Groot | Ik ben een paar dagen afwezig. Hoe stel ik in Outlook een automatisch antwoord in?", "Camilo van Trijp | Ik moet een audio-opname maken met mijn telefoon en daarna omzetten in tekst in MS Word. Hoe doe ik dat?", "Jeroen Versloot | Hoe kan ik van meerdere .PDF bestanden, één .PDF-bestand maken?"]}, {"title": "Werkwijze", "menuLabel": "Werkwijze", "kind": "normal", "items": ["Lees of beluister de melding rustig.", "Zoek de gebruiker, het object en de mogelijke oorzaak op.", "Gebruik de SLA om urgentie, impact en prioriteit te bepalen.", "Registreer de melding netjes en volledig in TOPdesk.", "Noteer wat je hebt gedaan en welke vervolgstap nodig is."]}, {"title": "Afronding", "menuLabel": "Afronding", "kind": "normal", "items": [["Registreer alle meldingen correct in TOPdesk", "Sla de registraties op in je portfolio-map"], "Controleer of de registratie duidelijk genoeg is voor een collega.", "Bewaar bewijs voor je portfolio."]}, {"title": "Portfolio-bewijs", "menuLabel": "Portfolio-bewijs", "kind": "normal", "items": ["Screenshot of export van je TOPdesk-registraties.", "Korte uitleg waarom je de gekozen prioriteit hebt gebruikt.", "Voorbeeld van een nette communicatie naar de gebruiker.", "Reflectie: wat ging goed, wat was lastig en wat doe je volgende keer anders?"]}]}, {"id": "p603", "title": "P6.03 Servicedesk – Dag 3: Druk, complex en urgent", "sections": [{"title": "P6.03 Servicedesk – Dag 3 – Druk, complex en urgent", "menuLabel": "Start opdracht", "kind": "normal", "items": ["Welkom terug op de servicedesk! Vandaag is het drukker dan ooit. Er komen 10 meldingen binnen, sommige zijn complex en vereisen escalatie naar de tweede lijn.", "Wat ga je oefenen?", "Werken onder hoge werkdruk op een realistische servicedesk", "Analyseren, prioriteren en verwerken van 10 meldingen", "Correcte registratie in TOPdesk en professionele communicatie", "Escaleren en samenwerken met de tweede lijn en specialisten"]}, {"title": "Links", "menuLabel": "TOPdesk", "kind": "links", "items": []}, {"title": "Binnengekomen meldingen", "menuLabel": "Meldingen verwerken", "kind": "cards", "items": ["Registreer de meldingen in TOPdesk. Aantal meldingen: 10.", "Martin Beijering | Hoe kan ik mijn scherm delen in een online vergadering?", "Marcel Offermans | Hoe kan ik mijn computer beveiligen tegen virussen?", "Hajo Kootstra | Ik heb per ongeluk een bestand verwijderd. Kan ik dat nog terughalen?", "Berry Dieleman | Ik wil adressen uit Excel gebruiken voor brieven in Word. Dit was iets met 'afdruk samenvoegen'.", "Leontine Dekker | Hoe kan ik in Excel pull-down menu's maken?", "Wilco Kamp | Ik heb nu nog Windows 10. Ik wil graag over naar Windows 11. Kan dat?", "Martin Beijering | Ik heb één dia die ik vaker wil gebruiken in mijn presentatie. Hoe kan ik die snel kopiëren?", "Marcel Offermans | In de Verkenner zie ik mijn bestanden alleen als pictogrammen. Hoe kan ik ze als lijst met details bekijken?", "Hajo Kootstra | Hoe kan ik zien hoe snel mijn internetverbinding is?", "Berry Dieleman | Ik wil snel Microsoft Excel kunnen openen vanaf mijn bureaublad. Hoe maak ik een snelkoppeling?"]}, {"title": "Werkwijze", "menuLabel": "Werkwijze", "kind": "normal", "items": ["Lees of beluister de melding rustig.", "Zoek de gebruiker, het object en de mogelijke oorzaak op.", "Gebruik de SLA om urgentie, impact en prioriteit te bepalen.", "Registreer de melding netjes en volledig in TOPdesk.", "Noteer wat je hebt gedaan en welke vervolgstap nodig is."]}, {"title": "Afronding", "menuLabel": "Afronding", "kind": "normal", "items": [["Registreer alle meldingen correct in TOPdesk", "Sla je registraties op in je portfolio-map"], "Controleer of de registratie duidelijk genoeg is voor een collega.", "Bewaar bewijs voor je portfolio."]}, {"title": "Portfolio-bewijs", "menuLabel": "Portfolio-bewijs", "kind": "normal", "items": ["Screenshot of export van je TOPdesk-registraties.", "Korte uitleg waarom je de gekozen prioriteit hebt gebruikt.", "Voorbeeld van een nette communicatie naar de gebruiker.", "Reflectie: wat ging goed, wat was lastig en wat doe je volgende keer anders?"]}]}, {"id": "p604", "title": "P6.04 Servicedesk – Dag 4: E-mail support", "sections": [{"title": "P6.04 Servicedesk – Dag 4 – E-mail support", "menuLabel": "Start opdracht", "kind": "normal", "items": ["Vandaag werk je uitsluitend met meldingen die via e-mail zijn binnengekomen. Lees de e-mails zorgvuldig, interpreteer de vragen en reageer formeel en professioneel.", "Wat ga je oefenen?", "Analyseren en interpreteren van klantvragen in e-mails", "Formeel en professioneel communiceren per e-mail", "Correcte registratie in TOPdesk en escalatie indien nodig"]}, {"title": "Links", "menuLabel": "TOPdesk", "kind": "links", "items": []}, {"title": "Binnengekomen e-mails", "menuLabel": "E-mails verwerken", "kind": "cards", "items": ["Lees iedere e-mail zorgvuldig. Bepaal de vraag, formuleer een professioneel antwoord en registreer de melding in TOPdesk.", "E-mail 1 | Hajo Kootstra | Pagina liggend maken in Word | Ik heb een document in Word waarin één pagina liggend moet zijn en de rest staand. Hoe kan ik dat instellen zonder dat het hele document verandert?", "E-mail 2 | Yvonne van de Pas | Kolommen maken in Word | Ik wil mijn tekst in Word weergeven in twee kolommen, net als in een nieuwsbrief. Waar kan ik dit instellen?", "E-mail 3 | Schrover | Rij vastzetten in Excel | In Excel wil ik de bovenste rij vastzetten zodat deze zichtbaar blijft als ik naar beneden scroll.", "E-mail 4 | Benno Richters | Dia-achtergrond aanpassen in PowerPoint | Ik wil de achtergrondkleur van mijn PowerPoint-dia's aanpassen voor één dia of voor alle dia's tegelijk.", "E-mail 5 | Berry Dieleman | Bestandsextensies zichtbaar maken | In Windows zie ik bij bestanden geen extensies zoals .docx of .pdf. Hoe kan ik dit zichtbaar maken?", "E-mail 6 | Naoual Dehak | Opmerkingen toevoegen in Word | Ik wil in een Word-document opmerkingen plaatsen zonder de tekst zelf aan te passen.", "E-mail 7 | Yvonne van de Pas | Cellen samenvoegen in Excel | Ik wil meerdere cellen samenvoegen tot één grotere cel in Excel.", "E-mail 8 | Hajo Kootstra | Recent geopende bestanden terugvinden | Ik ben op zoek naar een document dat ik eerder heb geopend, maar ik weet niet meer waar het is opgeslagen.", "E-mail 9 | Benno Richters | Afbeelding netjes uitlijnen in Word | Ik heb een afbeelding in mijn Word-document geplaatst, maar de tekst loopt er vreemd omheen.", "E-mail 10 | Berry Dieleman | Tijd en datum aanpassen in Windows | De tijd en datum op mijn computer kloppen niet. Waar kan ik dit aanpassen in Windows?"]}, {"title": "Werkwijze", "menuLabel": "Werkwijze", "kind": "normal", "items": ["Lees of beluister de melding rustig.", "Zoek de gebruiker, het object en de mogelijke oorzaak op.", "Gebruik de SLA om urgentie, impact en prioriteit te bepalen.", "Registreer de melding netjes en volledig in TOPdesk.", "Noteer wat je hebt gedaan en welke vervolgstap nodig is."]}, {"title": "Afronding", "menuLabel": "Afronding", "kind": "normal", "items": [["Stel voor alle e-mails een correcte e-mailreactie op en verwerk die in je TOPdesk registratie", "Registreer alle meldingen correct in TOPdesk", "Sla de registraties op in je portfolio-map"], "Controleer of de registratie duidelijk genoeg is voor een collega.", "Bewaar bewijs voor je portfolio."]}, {"title": "Portfolio-bewijs", "menuLabel": "Portfolio-bewijs", "kind": "normal", "items": ["Screenshot of export van je TOPdesk-registraties.", "Korte uitleg waarom je de gekozen prioriteit hebt gebruikt.", "Voorbeeld van een nette communicatie naar de gebruiker.", "Reflectie: wat ging goed, wat was lastig en wat doe je volgende keer anders?"]}]}, {"id": "p605", "title": "P6.05 School-examenportfolio: Samenvatting & inleveren", "sections": [{"title": "P6.05 School-examenportfolio – Samenvatting & inleveren", "menuLabel": "Start opdracht", "kind": "normal", "items": ["Bekijk de uitwerkingen van P6.01 t/m P6.04 nog eens goed. Kies de 10 meldingen die jij het beste geregistreerd hebt uit en stel je school-examenportfolio op.", "Wat ga je oefenen?"]}, {"title": "Links", "menuLabel": "TOPdesk", "kind": "links", "items": []}, {"title": "Portfolio samenstellen", "menuLabel": "Portfolio maken", "kind": "cards", "items": ["Bekijk de uitwerkingen van P6.01 t/m P6.04 nog eens goed. Kies de 10 meldingen die jij het beste geregistreerd hebt uit en stel je school-examenportfolio op.", "1. Voorblad | Naam, studentnummer, klas, opleiding en eventueel een afbeelding", "2. Inhoudsopgave | Automatisch gegenereerd in Word", "3. Korte inleiding | Waarom schrijf je dit portfolio?", "4. STARRT-uitwerkingen | Uitleg van de 10 meldingen via de STARRT-methode", "5. Bijlage | De 10 TOPdesk registraties als bijlage"]}, {"title": "Werkwijze", "menuLabel": "Werkwijze", "kind": "normal", "items": ["Lees of beluister de melding rustig.", "Zoek de gebruiker, het object en de mogelijke oorzaak op.", "Gebruik de SLA om urgentie, impact en prioriteit te bepalen.", "Registreer de melding netjes en volledig in TOPdesk.", "Noteer wat je hebt gedaan en welke vervolgstap nodig is."]}, {"title": "Afronding", "menuLabel": "Afronding", "kind": "normal", "items": [["Kies de 10 meldingen die jij het beste geregistreerd hebt", "Pas ze eventueel nog aan en verbeter je registraties", "Lever het portfolio in als één .PDF bestand"], "Controleer of de registratie duidelijk genoeg is voor een collega.", "Bewaar bewijs voor je portfolio."]}, {"title": "Portfolio-bewijs", "menuLabel": "Portfolio-bewijs", "kind": "normal", "items": ["Screenshot of export van je TOPdesk-registraties.", "Korte uitleg waarom je de gekozen prioriteit hebt gebruikt.", "Voorbeeld van een nette communicatie naar de gebruiker.", "Reflectie: wat ging goed, wat was lastig en wat doe je volgende keer anders?"]}]}];
+const opdrachtLinks = [{"label": "TOPdesk", "icon": "ti-device-desktop", "url": "https://www.stichtingpraktijkleren.nl/ict/leermiddelen/topdesk-leermiddelen/topdesk/"}];
+let currentTaskIndex = 0;
+
+function moveTopdeskToBottom(task) {
+  const index = task.sections.findIndex(section => section.menuLabel === 'TOPdesk');
+  if (index > -1 && index !== task.sections.length - 1) {
+    const [section] = task.sections.splice(index, 1);
+    task.sections.push(section);
+  }
+}
+tasks.forEach(moveTopdeskToBottom);
+
+
+function escapeHTML(text) {
+  return String(text).replace(/[&<>"']/g, function(ch) {
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch];
+  });
+}
+
+function fillSelect() {
+  const select = document.getElementById('taskSelect');
+  select.innerHTML = tasks.map((task, index) => `<option value="${index}">${escapeHTML(task.title)}</option>`).join('');
+}
+
+function loadTask(index) {
+  currentTaskIndex = Number(index);
+  const task = tasks[currentTaskIndex];
+  const menu = document.getElementById('stepMenu');
+  menu.innerHTML = task.sections.map((section, i) =>
+    `<button class="tab-button ${i === 0 ? 'active' : ''}" onclick="loadStep(${currentTaskIndex}, ${i})">${escapeHTML(section.menuLabel)}</button>`
+  ).join('');
+  loadStep(currentTaskIndex, 0);
+}
+
+function lineToHtml(line) {
+  const safe = escapeHTML(line);
+  if (/^\d+\.\s/.test(safe)) return `<p class="info"><strong>${safe}</strong></p>`;
+  if (safe.includes(' | ')) {
+    const parts = safe.split(' | ');
+    const first = parts.shift();
+    return `<div class="melding-card"><strong>${first}</strong><span>${parts.join(' — ')}</span></div>`;
+  }
+  return `<p>${safe}</p>`;
+}
+
+function linkDesc(label) {
+  return 'Open de virtuele TOPdesk-omgeving voor deze dagtaak.';
+}
+
+function renderLinks(taskIndex) {
+  const task = tasks[taskIndex];
+  let html = `<span class="badge">${escapeHTML(task.title.split(':')[0])}</span>`;
+  html += `<h2>TOPdesk</h2>`;
+  html += `<p>Open de virtuele TOPdesk-omgeving in een nieuw tabblad en gebruik deze naast je dagtaak.</p>`;
+  html += `<div class="links-grid">`;
+  html += opdrachtLinks.map(link => `
+    <a class="link-card" href="${link.url}" target="_blank" rel="noopener">
+      <strong>${escapeHTML(link.label)}</strong>
+      <span>${escapeHTML(linkDesc(link.label))}</span>
+    </a>
+  `).join('');
+  html += `</div>`;
+  html += `<p class="note"><strong>Tip:</strong> registreer je melding netjes in TOPdesk en maak bewijs voor je portfolio.</p>`;
+  document.getElementById('contentPanel').innerHTML = html;
+}
+
+function loadCurrentLinks() {
+  const task = tasks[currentTaskIndex];
+  const linksIndex = task.sections.findIndex(section => section.menuLabel === 'TOPdesk');
+  if (linksIndex >= 0) {
+    loadStep(currentTaskIndex, linksIndex);
+  }
+}
+
+function loadStep(taskIndex, stepIndex) {
+  currentTaskIndex = Number(taskIndex);
+  document.querySelectorAll('.tab-button').forEach((button, i) => button.classList.toggle('active', i === stepIndex));
+  const section = tasks[taskIndex].sections[stepIndex];
+
+  if (section.kind === 'links') {
+    renderLinks(taskIndex);
+    return;
+  }
+
+  let html = `<span class="badge">${escapeHTML(tasks[taskIndex].title.split(':')[0])}</span><h2>${escapeHTML(section.title)}</h2>`;
+
+  if (section.kind === 'cards') {
+    html += section.items.map(lineToHtml).join('');
+  } else {
+    const items = section.items || [];
+    let list = [];
+    items.forEach((line, index) => {
+      if (index < 2) {
+        html += lineToHtml(line);
+      } else {
+        list.push(`<li>${escapeHTML(line)}</li>`);
+      }
+    });
+    if (list.length) html += `<ul>${list.join('')}</ul>`;
+  }
+  document.getElementById('contentPanel').innerHTML = html;
+}
+
+fillSelect();
+loadTask(0);
+</script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>First Lane - Startpagina</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="menu-page">
+  <main class="page-shell" aria-label="Startpagina First Lane">
+    <section class="content-grid">
+      <div class="left-column">
+        <article class="glass-card assignment-card">
+          <div class="pill"><span aria-hidden="true">📋</span><span>Context</span></div>
+          <p class="body-text">
+            In deze cursus ga je trainen/oefenen en het portfolio B1-K2 maken. Je oefent alle deelvaardigheden en sluit deze module af met het je portfolio en een CGI-/eindgesprek B1-K2. Dit noemen vaak het Helpdesk-examen. 
+          </p>
+        </article>
+
+        <article class="glass-card outcome-card">
+          <div class="pill"><span aria-hidden="true">🎯</span><span>Leeruitkomst</span></div>
+          <h1 class="section-title">Wat laat jij aan het einde zien?</h1>
+          <p class="body-text">
+            Je neemt ICT-meldingen aan, registreert ze en handelt ze af. Daarbij overleg je tijdig en stem je af met klanten, collega's en andere betrokkenen — zodat iedereen weet wat er speelt en wanneer het opgelost is.
+          </p>
+          <div class="tags" aria-label="Werkprocessen">
+            <span class="tag">B1-K2-W1</span>
+            <span class="tag">B1-K2-W2</span>
+          </div>
+        </article>
+      </div>
+
+      <aside class="right-column" aria-label="Navigatie">
+        <div class="section-heading">Wat ga je doen?</div>
+
+        <div class="action-list">
+          <a class="action-card popup-link" href="firstlinelinked.html" aria-label="Open LinkedIn">
+            <div class="icon-box" aria-hidden="true">in</div>
+            <div>
+              <h2 class="action-title">LinkedIn</h2>
+              <p class="action-desc">Klantenservice e-mail schrijven, Klantenservice via de telefoon, Werken met boze klanten</p>
+            </div>
+            <div class="arrow" aria-hidden="true">→</div>
+          </a>
+
+          <a class="action-card popup-link" href="firstlinedagtaken.html" aria-label="Open Dagtaken">
+            <div class="icon-box" aria-hidden="true">✓</div>
+            <div>
+              <h2 class="action-title">Dagtaken</h2>
+              <p class="action-desc">Praktische opdrachten die je elke dag uitvoert</p>
+            </div>
+            <div class="arrow" aria-hidden="true">→</div>
+          </a>
+
+          <a class="action-card popup-link" href="firstlinespl.html" aria-label="Open Stichting Praktijkleren">
+            <div class="icon-box" aria-hidden="true">SPL</div>
+            <div>
+              <h2 class="action-title">Stichting Praktijkleren</h2>
+              <p class="action-desc">Professioneel telefoneren voor ICT'ers, Topdesk</p>
+            </div>
+            <div class="arrow" aria-hidden="true">→</div>
+          </a>
+        </div>
+
+        <div class="section-heading">Afsluiting</div>
+
+        <a class="action-card project-card popup-link" href="firstlinepvb.html" aria-label="Open PVB">
+          <div class="icon-box" aria-hidden="true">🏆</div>
+          <div>
+            <h2 class="action-title">PVB</h2>
+            <p class="action-desc">Portfolio</p>
+          </div>
+          <div class="arrow" aria-hidden="true">→</div>
+        </a>
+
+        <a class="action-card self-review-card popup-link" href="firstlinezelfbeoordeling.html" aria-label="Open Zelfbeoordeling First Lane">
+          <div class="icon-box" aria-hidden="true">★</div>
+          <div>
+            <h2 class="action-title">Zelfbeoordeling</h2>
+            <p class="action-desc">Kijk terug op je eigen ontwikkeling</p>
+          </div>
+          <div class="arrow" aria-hidden="true">→</div>
+        </a>
+      </aside>
+    </section>
+  </main>
+
+  <div class="page-modal" id="pageModal" aria-hidden="true">
+    <section class="page-modal__window" role="dialog" aria-modal="true" aria-label="Lespagina First Lane">
+      <button class="page-modal__close" type="button" aria-label="Sluit venster">×</button>
+      <iframe class="page-modal__frame" title="Lespagina First Lane" src="about:blank"></iframe>
+    </section>
+  </div>
+
+  <script>
+    const modal = document.getElementById('pageModal');
+    const modalFrame = modal.querySelector('.page-modal__frame');
+    const closeButton = modal.querySelector('.page-modal__close');
+
+    function closeModal() {
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      modalFrame.src = 'about:blank';
+    }
+
+    document.querySelectorAll('.popup-link').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        modalFrame.src = link.href;
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        closeButton.focus();
+      });
+    });
+
+    closeButton.addEventListener('click', closeModal);
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+    });
+  </script>
+</body>
+</html>
