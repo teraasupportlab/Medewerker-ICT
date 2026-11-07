@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BPV - Menu</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="menu-page all-connected-menu">
+  <main class="page-shell" aria-label="Menu BPV">
+    <section class="content-grid">
+      <div class="left-column">
+        <article class="glass-card assignment-card">
+          <div class="pill"><span aria-hidden="true">📋</span><span>Context</span></div>
+          <p class="body-text">
+            Tijdens je BPV werk je mee in een echte beroepssituatie. Je laat zien dat je als beginnend Medewerker ICT klantgericht, veilig en volgens afspraken kunt werken.
+          </p>
+        </article>
+
+        <article class="glass-card outcome-card">
+          <div class="pill"><span aria-hidden="true">🎯</span><span>Leeruitkomst</span></div>
+          <h1 class="section-title">Wat laat jij aan het einde zien?</h1>
+          <p class="body-text">
+            Je voert ICT-werkzaamheden uit in een bedrijf en verzamelt bewijs van wat je doet. Aan het einde kijk je terug op je ontwikkeling en onderbouw je jouw werk met je portfolio.
+          </p>
+          <div class="tags" aria-label="Werkprocessen">
+            <span class="tag">B1-K1</span>
+            <span class="tag">B1-K2</span>
+          </div>
+        </article>
+      </div>
+
+      <aside class="right-column" aria-label="Navigatie">
+        <div class="section-heading">Wat ga je doen?</div>
+
+        <div class="action-list">
+          <a class="action-card popup-link" href="connectedlinked.html" aria-label="Open LinkedIn Learning">
+            <div class="icon-box" aria-hidden="true">in</div>
+            <div>
+              <h2 class="action-title">LinkedIn Learning</h2>
+              <p class="action-desc">Theorie en voorbereiding</p>
+            </div>
+            <div class="arrow" aria-hidden="true">→</div>
+          </a>
+
+          <a class="action-card popup-link" href="connectedspl.html" aria-label="Open Stichting Praktijkleren">
+            <div class="icon-box" aria-hidden="true">SPL</div>
+            <div>
+              <h2 class="action-title">Stichting Praktijkleren</h2>
+              <p class="action-desc">Oefenen met ICT-situaties</p>
+            </div>
+            <div class="arrow" aria-hidden="true">→</div>
+          </a>
+        </div>
+
+        <div class="section-heading">Afsluiting</div>
+
+        <a class="action-card project-card popup-link" href="startpagina.html" aria-label="Open Beroepsproject BPV">
+          <div class="icon-box" aria-hidden="true">🏆</div>
+          <div>
+            <h2 class="action-title">Beroepsproject BPV</h2>
+            <p class="action-desc">De werkprocessen die je tijdens je BPV laat zien</p>
+          </div>
+          <div class="arrow" aria-hidden="true">→</div>
+        </a>
+
+        <a class="action-card project-card self-review-card popup-link" href="connectedzelfbeoordeling.html" aria-label="Open Zelfbeoordeling">
+          <div class="icon-box" aria-hidden="true">★</div>
+          <div>
+            <h2 class="action-title">Zelfbeoordeling</h2>
+            <p class="action-desc">Kijk terug op je eigen ontwikkeling</p>
+          </div>
+          <div class="arrow" aria-hidden="true">→</div>
+        </a>
+
+      </aside>
+    </section>
+  </main>
+
+  <div class="page-modal" id="pageModal" aria-hidden="true">
+    <section class="page-modal__window" role="dialog" aria-modal="true" aria-label="Lespagina">
+      <button class="page-modal__close" type="button" aria-label="Sluit pagina">×</button>
+      <iframe class="page-modal__frame" title="Lespagina" src="about:blank"></iframe>
+    </section>
+  </div>
+  <script>
+    const modal = document.getElementById('pageModal');
+    const modalFrame = modal.querySelector('.page-modal__frame');
+    const closeButton = modal.querySelector('.page-modal__close');
+
+    function closeModal() {
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      modalFrame.src = 'about:blank';
+    }
+
+    document.querySelectorAll('.popup-link').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        modalFrame.src = link.getAttribute('href');
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        closeButton.focus();
+      });
+    });
+
+    closeButton.addEventListener('click', closeModal);
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+    });
+  </script>
+</body>
+</html>

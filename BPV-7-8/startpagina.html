@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BPV - Startpagina</title>
+  <style>
+    :root {
+      --teraa-orange: #E5E5E5;
+      --teraa-orange-dark: #949494;
+      --ink: #101828;
+      --muted: #475467;
+      --glass: rgba(255, 255, 255, 0.76);
+      --glass-strong: rgba(255, 255, 255, 0.88);
+      --glass-border: rgba(255, 255, 255, 0.52);
+      --shadow: 0 18px 46px rgba(0, 0, 0, 0.20);
+      --radius-xl: 24px;
+      --radius-lg: 20px;
+      --radius-md: 16px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: transparent;
+    }
+
+    body {
+      display: grid;
+      place-items: start center;
+      overflow: hidden;
+    }
+
+    .page-shell {
+      width: min(1000px, 100vw);
+      height: 500px;
+      min-height: 0;
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-xl);
+      background:
+        radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.10) 0 16%, transparent 36%),
+        radial-gradient(circle at 84% 78%, rgba(171, 171, 171, 0.42) 0 18%, transparent 42%),
+        linear-gradient(135deg, #000000 0%, #1a0f04 28%, #949494 54%, var(--teraa-orange) 100%);
+      box-shadow: var(--shadow);
+    }
+
+    .page-shell::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,0.06) 0 1px, transparent 1px 80px),
+        linear-gradient(0deg, rgba(255,255,255,0.04) 0 1px, transparent 1px 80px);
+      opacity: 0.28;
+      pointer-events: none;
+    }
+
+    .content-grid {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 16px;
+      padding: 14px 18px;
+    }
+
+    .left-column,
+    .right-column { min-width: 0; }
+
+    .left-column {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 12px;
+    }
+
+    .glass-card {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.14);
+      backdrop-filter: blur(10px) saturate(125%);
+      -webkit-backdrop-filter: blur(10px) saturate(125%);
+    }
+
+    .assignment-card,
+    .outcome-card {
+      padding: 15px 18px;
+      border-left: 8px solid var(--teraa-orange);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      width: fit-content;
+      margin: 0 0 8px;
+      padding: 6px 11px;
+      border-radius: 999px;
+      background: var(--glass-strong);
+      color: var(--teraa-orange-dark);
+      font-size: 12px;
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    }
+
+    .section-title {
+      margin: 0 0 8px;
+      font-size: 21px;
+      line-height: 1.08;
+      color: var(--ink);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .body-text {
+      margin: 0 0 12px;
+      font-size: 14px;
+      line-height: 1.33;
+      color: #1f2937;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.82);
+      border: 1px solid rgba(255,255,255,0.60);
+      color: #111827;
+      font-size: 11.5px;
+      line-height: 1;
+      font-weight: 700;
+    }
+
+    .right-column {
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      padding: 2px 0 0;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 8px;
+      color: #fff;
+      font-size: 15px;
+      line-height: 1.1;
+      font-weight: 900;
+      letter-spacing: -0.01em;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.35);
+      white-space: nowrap;
+    }
+
+    .section-heading::after {
+      content: "";
+      display: block;
+      height: 1px;
+      flex: 1;
+      background: linear-gradient(90deg, rgba(255,255,255,0.60), rgba(255,255,255,0.04));
+    }
+
+    .topic-list {
+      display: grid;
+      gap: 9px;
+      min-height: 0;
+    }
+
+    .topic-card {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      min-height: 134px;
+      padding: 10px 13px 10px 12px;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-left: 8px solid var(--teraa-orange);
+      border-radius: var(--radius-md);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.13);
+      backdrop-filter: blur(10px) saturate(125%);
+      -webkit-backdrop-filter: blur(10px) saturate(125%);
+      overflow: hidden;
+    }
+
+    .topic-title {
+      margin: 0 0 5px;
+      font-size: 17px;
+      line-height: 1.08;
+      font-weight: 850;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+    }
+
+    .topic-desc,
+    .topic-examples {
+      margin: 0;
+      font-size: 12.2px;
+      line-height: 1.23;
+      color: #1f2937;
+    }
+
+    .topic-examples {
+      margin-top: 5px;
+      color: var(--muted);
+    }
+
+    .label {
+      font-weight: 800;
+      color: #111827;
+    }
+
+    @media (max-width: 760px) {
+      body { overflow: auto; }
+      .page-shell {
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        border-radius: 0;
+      }
+      .content-grid {
+        grid-template-columns: 1fr;
+        height: auto;
+        padding: 18px;
+      }
+      .topic-card { min-height: 0; }
+    }
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="beroepsproject">
+  <main class="page-shell" aria-label="BPV startpagina">
+    <section class="content-grid">
+      <div class="left-column">
+        <article class="glass-card assignment-card">
+          <div class="pill"><span aria-hidden="true">📋</span><span>Context</span></div>
+          <p class="body-text">
+            Tijdens de BPV ga je in een echte beroepssituatie aan de slag. Je komt te werken in een bedrijf waar een of meerdere werkprocessen van de opleiding Medewerker ICT uitgevoerd worden.
+          </p>
+        </article>
+
+        <article class="glass-card outcome-card">
+          <div class="pill"><span aria-hidden="true">🎯</span><span>Leeruitkomst</span></div>
+          <h1 class="section-title">Wat laat jij aan het einde zien?</h1>
+          <p class="body-text">
+            Tijdens je afsluitende stage functioneer je als beginnend Medewerker ICT in een echt bedrijf. Je voert ICT-werkzaamheden zelfstandig, klantgericht en veilig uit, volgens de procedures van het bedrijf. Je laat zien dat je je werk kunt verantwoorden — aan je begeleider, aan de klant en aan jezelf.
+          </p>
+          <div class="tags" aria-label="Werkprocessen">
+            <span class="tag">B1-K1</span>
+            <span class="tag">B1-K2</span>
+          </div>
+        </article>
+      </div>
+
+      <aside class="right-column" aria-label="BPV onderwerpen">
+        <div class="section-heading">BPV-onderwerpen</div>
+
+        <div class="topic-list">
+          <article class="topic-card">
+            <div>
+              <h2 class="topic-title">Ondersteunen van gebruikers bij ICT-vragen en meldingen</h2>
+              <p class="topic-desc"><span class="label">Kort:</span> je helpt gebruikers, neemt meldingen aan, stelt vragen en koppelt de oplossing terug.</p>
+              <p class="topic-examples"><span class="label">Voorbeelden:</span> wachtwoord resetten, printerprobleem oplossen, Teams/Outlook helpen, ticket aanmaken, telefonische of schriftelijke ondersteuning.</p>
+            </div>
+          </article>
+
+          <article class="topic-card">
+            <div>
+              <h2 class="topic-title">Gebruiksklaar maken, installeren en controleren van ICT-middelen</h2>
+              <p class="topic-desc"><span class="label">Kort:</span> je werkt aan devices, software, randapparatuur en eenvoudige netwerkverbindingen.</p>
+              <p class="topic-examples"><span class="label">Voorbeelden:</span> laptop installeren, werkplek klaarmaken, software installeren, updates uitvoeren, printer aansluiten, netwerkverbinding controleren.</p>
+            </div>
+          </article>
+
+          <article class="topic-card">
+            <div>
+              <h2 class="topic-title">Registreren, documenteren en verantwoorden van ICT-werkzaamheden</h2>
+              <p class="topic-desc"><span class="label">Kort:</span> je legt werkzaamheden vast, werkt volgens afspraken en reflecteert op je voortgang.</p>
+              <p class="topic-examples"><span class="label">Voorbeelden:</span> ticket bijwerken, servicebon invullen, handleiding of werkinstructie maken, dag-/weekverslag, bewijs verzamelen voor portfolio.</p>
+            </div>
+          </article>
+        </div>
+      </aside>
+    </section>
+  </main>
+</body>
+</html>
