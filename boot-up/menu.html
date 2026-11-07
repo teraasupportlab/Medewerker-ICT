@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Boot up - Startpagina</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="menu-page">
+  <main class="page-shell" aria-label="Startpagina Boot up">
+    <section class="content-grid">
+      <div class="left-column">
+        <article class="glass-card assignment-card">
+          <div class="pill"><span aria-hidden="true">📋</span><span>Context</span></div>
+          <p class="body-text">
+            In deze cursus ga je trainen/oefenen om het praktijkexamen B1-K1 te maken. Je oefent alle deelvaardigheden en sluit deze module af met het praktijkexamen B1-K1. Dit noemen vaak het Hardware, Software, Netwerken-examen.
+          </p>
+        </article>
+
+        <article class="glass-card outcome-card">
+          <div class="pill"><span aria-hidden="true">🎯</span><span>Leeruitkomst</span></div>
+          <h1 class="section-title">Wat laat jij aan het einde zien?</h1>
+          <p class="body-text">
+            Je maakt devices gebruiksklaar, installeert en configureert software en monteert en configureert netwerk- en infrastructuuronderdelen. Dit doe je conform de gegeven opdracht en de geldende procedures — klaar voor je examen.
+          </p>
+          <div class="tags" aria-label="Werkprocessen">
+            <span class="tag">B1-K1-W1</span>
+            <span class="tag">B1-K1-W2</span>
+            <span class="tag">B1-K1-W3</span>
+          </div>
+        </article>
+      </div>
+
+      <aside class="right-column" aria-label="Navigatie">
+        <div class="section-heading">Wat ga je doen?</div>
+
+        <div class="action-list">
+          <a class="action-card popup-link" href="bootuplinked.html" aria-label="Open LinkedIn">
+            <div class="icon-box" aria-hidden="true">in</div>
+            <div>
+              <h2 class="action-title">LinkedIn</h2>
+              <p class="action-desc">Oefen software, netwerken en het afhandelen van meldingen</p>
+            </div>
+            <div class="arrow" aria-hidden="true">→</div>
+          </a>
+
+          <a class="action-card popup-link" href="bootupdagtaken.html" aria-label="Open Dagtaken">
+            <div class="icon-box" aria-hidden="true">✓</div>
+            <div>
+              <h2 class="action-title">Dagtaken</h2>
+              <p class="action-desc">Praktische opdrachten die je elke dag uitvoert</p>
+            </div>
+            <div class="arrow" aria-hidden="true">→</div>
+          </a>
+
+          <a class="action-card popup-link" href="bootupspl.html" aria-label="Open Stichting Praktijkleren">
+            <div class="icon-box" aria-hidden="true">SPL</div>
+            <div>
+              <h2 class="action-title">Stichting Praktijkleren</h2>
+              <p class="action-desc">Bekabeling. glasvezel, ICT Juridisch, case security, bagage voor je stage</p>
+            </div>
+            <div class="arrow" aria-hidden="true">→</div>
+          </a>
+
+        </div>
+
+       
+
+        <div class="section-heading">Afsluiting</div>
+
+        <a class="action-card project-card popup-link" href="bootuppvb.html" aria-label="Open PVB B1-K1">
+          <div class="icon-box" aria-hidden="true">🏆</div>
+          <div>
+            <h2 class="action-title">PVB B1-K1</h2>
+            <p class="action-desc">Proeve van bekwaamheid</p>
+          </div>
+          <div class="arrow" aria-hidden="true">→</div>
+        </a>
+
+        <a class="action-card self-review-card popup-link" href="bootupzelfbeoordeling.html" aria-label="Open Zelfbeoordeling">
+          <div class="icon-box" aria-hidden="true">✓</div>
+          <div>
+            <h2 class="action-title">Zelfbeoordeling</h2>
+            <p class="action-desc">Kijk terug op jouw werk en bewijs</p>
+          </div>
+          <div class="arrow" aria-hidden="true">→</div>
+        </a>
+      </aside>
+    </section>
+  </main>
+
+  <div class="page-modal" id="pageModal" aria-hidden="true">
+    <section class="page-modal__window" role="dialog" aria-modal="true" aria-label="Lespagina Boot up">
+      <button class="page-modal__close" type="button" aria-label="Sluit venster">×</button>
+      <iframe class="page-modal__frame" title="Lespagina Boot up" src="about:blank"></iframe>
+    </section>
+  </div>
+
+  <script>
+    const modal = document.getElementById('pageModal');
+    const modalFrame = modal.querySelector('.page-modal__frame');
+    const closeButton = modal.querySelector('.page-modal__close');
+
+    function closeModal() {
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      modalFrame.src = 'about:blank';
+    }
+
+    document.querySelectorAll('.popup-link').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        modalFrame.src = link.href;
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        closeButton.focus();
+      });
+    });
+
+    closeButton.addEventListener('click', closeModal);
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+    });
+  </script>
+</body>
+</html>
