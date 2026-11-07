@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<title>ICT Route - Voorbereiden en onderbouwen</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+.tab-wrapper {
+  width: 1000px;
+  height: 500px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+  border-radius: 22px;
+  background: linear-gradient(160deg, #000000 0%, #1f1f1f 38%, #6698AD 100%);
+}
+
+.banner {
+  height: 145px;
+  box-sizing: border-box;
+  background: transparent;
+  border-radius: 22px 22px 0 0;
+  color: white;
+  padding: 22px 32px 16px;
+}
+
+.banner h1 {
+  margin: 0 0 6px;
+  font-size: 30px;
+  line-height: 1.1;
+  color: white;
+}
+
+.banner p {
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.35;
+  max-width: 870px;
+  color: white;
+}
+
+.chips {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.chips span {
+  background: white;
+  color: #12333a;
+  border-radius: 999px;
+  padding: 6px 11px;
+  font-size: 13px;
+}
+
+.tab-page {
+  height: 355px;
+  display: flex;
+  gap: 12px;
+  border: none;
+  border-radius: 0 0 22px 22px;
+  overflow: hidden;
+  background: transparent;
+  padding: 0 14px 14px 0;
+}
+
+.tab-menu {
+  flex: 0 0 205px;
+  width: 205px;
+  background: transparent;
+  padding: 8px 0 10px 12px;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+}
+
+.tab-button {
+  width: 100%;
+  display: block;
+  border: none;
+  background: rgba(255,255,255,0.08);
+  color: white;
+  text-align: left;
+  padding: 6px 12px;
+  margin-bottom: 4px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13.2px;
+  line-height: 1.1;
+}
+
+.tab-button:hover,
+.tab-button.active {
+  background: #6698AD;
+  color: #12333a;
+}
+
+.tab-content-area {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 321px;
+  padding: 14px 24px;
+  overflow-y: hidden;
+  background: rgba(255,255,255,0.74);
+  border-radius: 18px;
+  backdrop-filter: blur(1px);
+  position: relative;
+  z-index: 1;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.tab-content h2 {
+  color: #53666B;
+  margin: 0 0 6px;
+  font-size: 22px;
+}
+
+.tab-content p {
+  font-size: 14px;
+  line-height: 1.24;
+  margin: 0 0 5px;
+  color: #24343a;
+}
+
+.tab-content ul,
+.tab-content ol {
+  margin: 4px 0 6px 20px;
+  padding: 0;
+}
+
+.tab-content li {
+  font-size: 14px;
+  line-height: 1.22;
+  margin-bottom: 3px;
+  color: #24343a;
+}
+
+.note,
+.info {
+  background: rgba(247,250,251,0.72);
+  border-left: 5px solid #6698AD;
+  padding: 8px 11px;
+  border-radius: 10px;
+  color: #24343a;
+  margin: 7px 0;
+  font-size: 14px;
+  line-height: 1.22;
+}
+
+.action-link {
+  display: inline-block;
+  background: #6698AD;
+  color: #12333a;
+  text-decoration: none;
+  border-radius: 999px;
+  padding: 7px 13px;
+  font-weight: bold;
+  font-size: 13.5px;
+  margin-top: 4px;
+}
+
+.action-link:hover {
+  background:  #B2C6D3;
+  color: #12333a;
+}
+
+.badge {
+  display: inline-block;
+  background: #1e7e8f;
+  color: white;
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-size: 12.5px;
+  margin-bottom: 4px;
+}
+
+
+/* Houdt de complete pagina exact 500 px hoog.
+   Het witte tekstvlak en het menu staan nog iets lager; de hoogte is gelijk gebleven. */
+.tab-wrapper {
+  width: min(1000px, 100%);
+  height: 500px;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.banner {
+  height: 145px;
+  min-height: 0;
+}
+
+.tab-page {
+  height: 355px;
+  min-height: 0;
+  align-items: flex-start;
+  padding: 40px 14px 14px 12px;
+  gap: 14px;
+  overflow: hidden;
+}
+
+.tab-menu {
+  flex: 0 0 205px;
+  width: 205px;
+  padding-left: 0;
+  overflow: hidden;
+}
+
+.tab-content-area {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 292px;
+  min-height: 0;
+  max-height: 292px;
+  overflow-y: hidden;
+  margin: 0;
+}
+
+.tab-button {
+  position: relative;
+  z-index: 3;
+}
+
+@media (max-width: 760px) {
+  .tab-page {
+    flex-direction: column;
+    padding: 0 12px 14px;
+  }
+
+  .tab-menu {
+    width: 100%;
+    flex: 0 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 8px 0 0;
+  }
+
+  .tab-button {
+    width: auto;
+    margin-bottom: 0;
+  }
+}
+
+</style>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body data-page="linked">
+
+<div class="tab-wrapper">
+
+  <section class="banner">
+    <h1>ICT Route: software en netwerken voorbereiden, meldingen aannemen en afhandelen</h1>
+    <p>Je start met de ICT-route van S&R Trucks. Je bekijkt video’s, oefent je kennis, maakt een oefenexamen en verzamelt bewijs voor je portfolio.</p>
+
+    <div class="chips">
+      <span>💻 ICT Route</span>
+      <span>🎥 LinkedIn Learning</span>
+      <span>📁 Portfolio</span>
+      <span>✅ Stichting praktijkleren</span>
+    </div>
+  </section>
+
+  <div class="tab-page">
+    <div class="tab-menu">
+      <button class="tab-button active" onclick="openTab(event, 'start')">Start</button>
+      <button class="tab-button" onclick="openTab(event, 'werken')">Zo werk je</button>
+      <button class="tab-button" onclick="openTab(event, 'videos')">Video’s</button>
+      <button class="tab-button" onclick="openTab(event, 'portfolio')">Portfolio</button>
+      <button class="tab-button" onclick="openTab(event, 'bewijs')">Bewijs</button>
+      <button class="tab-button" onclick="openTab(event, 'onthoud')">Onthoud</button>
+    </div>
+
+    <div class="tab-content-area">
+
+      <div id="start" class="tab-content active">
+        <h2>We kunnen beginnen</h2>
+        <p>We kunnen beginnen met de ICT-route van <strong>S&R Trucks</strong>. Op deze pagina vind je wat je nodig hebt om goed te starten.</p>
+        <p>Je bekijkt de LinkedIn Learning-video’s, oefent je kennis en laat zien wat je kunt. Alles wat je leert, gebruik je later bij de praktijkopdrachten.</p>
+        <p>Werk rustig en stap voor stap. Je hoeft niet alles meteen te weten. Het belangrijkste is dat je begint, oefent en bewijs verzamelt van je leerproces.</p>
+        <p class="note"><strong>Belangrijk:</strong> deze pagina is je startpunt voor de opdracht <em>Voorbereiden en onderbouwen hardware- en softwarewerkzaamheden</em>.</p>
+      </div>
+
+      <div id="werken" class="tab-content">
+        <h2>Zo werk je met deze pagina</h2>
+        <p>Gebruik deze pagina als routekaart. Je gaat niet alleen kijken, maar ook actief verwerken wat je leert.</p>
+        <ol>
+          <li>Bekijk een stukje theorie of video.</li>
+          <li>Maak korte aantekeningen van wat je leert.</li>
+          <li>Gebruik je kennis bij de praktijkopdrachten.</li>
+          <li>Maak screenshots van je voortgang of resultaten.</li>
+          <li>Zet belangrijke bewijzen en reflecties in je portfolio.</li>
+        </ol>
+        <p class="info"><strong>Tip:</strong> schrijf vooral dingen op die je later kunt gebruiken bij S&R Trucks. Zo maak je de koppeling tussen theorie en praktijk.</p>
+      </div>
+
+      <div id="videos" class="tab-content">
+        <h2>Start met de LinkedIn-video’s</h2>
+        <p></p>
+        <p>Bekijk de LinkedIn-video’s en gebruik wat je leert bij de opdrachten van S&R Trucks.</p>
+        <p>Maak tijdens het kijken korte aantekeningen. Schrijf vooral op welke begrippen, onderdelen of keuzes je later nodig hebt bij hardware- en softwarewerkzaamheden.</p>
+        <p>Je hoeft niet alles in één keer te begrijpen. Kijk gericht, pauzeer wanneer nodig en noteer wat belangrijk is.</p>
+        <p><a class="action-link" href="https://www.linkedin.com/learning/basisbeginselen-van-netwerken-de-basis-van-netwerken" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, '_blank', 'noopener'); return false;">Basisbeginselen van netwerken</a></p>
+        <p><a class="action-link" href="https://www.linkedin.com/learning/learning-subnetting-2019?contextUrn=urn%3Ali%3AlearningCollection%3A7441348246800850944&amp;u=84048860" target="_blank" rel="noopener">Subnetting leren</a></p>
+        <p><a class="action-link" href="https://www.linkedin.com/learning/build-and-configure-networks-with-packet-tracer?contextUrn=urn%3Ali%3AlearningCollection%3A7441348246800850944&amp;u=84048860" target="_blank" rel="noopener">Bouw en configureer netwerken met Packet Tracer</a></p>
+      </div>
+
+      <div id="portfolio" class="tab-content">
+        <h2>Portfolio-tip</h2>
+        <p>Maak screenshots van je voortgang, noteer wat je hebt geleerd en bewaar je resultaten. Zo laat je niet alleen zien wat je hebt gemaakt, maar ook hoe je hebt geleerd.</p>
+        <p class="info"><strong>Tip:</strong> zet niet alleen het eindresultaat in je portfolio, maar ook bewijs van je leerproces.</p>
+        <ul>
+          <li>Screenshot van bekeken video’s.</li>
+          <li>Screenshot van je oefenresultaat.</li>
+          <li>Korte reflectie: wat heb je geleerd?</li>
+          <li>Korte reflectie: wat wil je nog verbeteren?</li>
+        </ul>
+      </div>
+
+      <div id="bewijs" class="tab-content">
+        <h2>Wat bewaar je als bewijs?</h2>
+        <p>Bewijs laat zien dat je actief hebt gewerkt aan de ICT-route. Verzamel daarom tijdens het werken meerdere soorten bewijs.</p>
+        <ul>
+          <li>Aantekeningen van de theorie of video’s.</li>
+          <li>Screenshots van voortgang in LinkedIn Learning.</li>
+          <li>Screenshots van het oefenexamen of oefenresultaat.</li>
+          <li>Voorbeelden waarin je de theorie gebruikt bij een praktijkopdracht.</li>
+          <li>Een korte reflectie op wat goed ging en wat je nog wilt oefenen.</li>
+        </ul>
+        <p>Bewaar je bewijs netjes, zodat je het later makkelijk kunt terugvinden en toevoegen aan je portfolio.</p>
+      </div>
+
+      <div id="onthoud" class="tab-content">
+        <h2>Onthoud dit goed</h2>
+        <p>Deze pagina is je startpunt. Begin rustig, werk stap voor stap en verzamel onderweg bewijs voor je portfolio.</p>
+        <p>Oefenen hoort erbij. Je hoeft niet alles meteen te weten. Door video’s te bekijken, aantekeningen te maken en jezelf te testen, word je steeds zekerder.</p>
+        <p>Gebruik wat je leert bij de opdrachten van S&R Trucks. Zo laat je zien dat je theorie kunt koppelen aan echte ICT-werkzaamheden.</p>
+        <p class="note"><strong>Belangrijk:</strong> werk actief mee, bewaar je bewijs en reflecteer kort op wat je hebt geleerd.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+function openTab(event, tabId) {
+  document.querySelectorAll(".tab-content").forEach(function(content) {
+    content.classList.remove("active");
+  });
+
+  document.querySelectorAll(".tab-button").forEach(function(button) {
+    button.classList.remove("active");
+  });
+
+  document.getElementById(tabId).classList.add("active");
+  event.currentTarget.classList.add("active");
+}
+</script>
+
+</body>
+</html>

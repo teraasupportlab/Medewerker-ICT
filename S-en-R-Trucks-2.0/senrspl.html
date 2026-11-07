@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<title>TOPdesk leermiddelen</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+.tab-wrapper {
+  width: 1000px;
+  height: 500px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+  border-radius: 22px;
+  background: linear-gradient(160deg, #000000 0%, #1f1f1f 38%, #6698AD 100%);
+}
+
+.banner {
+  height: 145px;
+  box-sizing: border-box;
+  background: transparent;
+  border-radius: 22px 22px 0 0;
+  color: white;
+  padding: 22px 32px 16px;
+}
+
+.banner h1 {
+  margin: 0 0 6px;
+  font-size: 30px;
+  line-height: 1.1;
+  color: white;
+}
+
+.banner p {
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.35;
+  max-width: 870px;
+  color: white;
+}
+
+.chips {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.chips span {
+  background: white;
+  color: #12333a;
+  border-radius: 999px;
+  padding: 6px 11px;
+  font-size: 13px;
+}
+
+.tab-page {
+  height: 355px;
+  display: flex;
+  gap: 12px;
+  border: none;
+  border-radius: 0 0 22px 22px;
+  overflow: hidden;
+  background: transparent;
+  padding: 0 14px 14px 0;
+}
+
+.tab-menu {
+  flex: 0 0 205px;
+  width: 205px;
+  background: transparent;
+  padding: 8px 0 10px 12px;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+}
+
+.tab-button {
+  width: 100%;
+  display: block;
+  border: none;
+  background: rgba(255,255,255,0.08);
+  color: white;
+  text-align: left;
+  padding: 5px 10px;
+  margin-bottom: 3px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12.2px;
+  line-height: 1.05;
+}
+
+.tab-button:hover,
+.tab-button.active {
+  background: #6698AD;
+  color: #12333a;
+}
+
+.tab-content-area {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 321px;
+  padding: 14px 24px;
+  overflow-y: hidden;
+  background: rgba(255,255,255,0.74);
+  border-radius: 18px;
+  backdrop-filter: blur(1px);
+  position: relative;
+  z-index: 1;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.tab-content h2 {
+  color: #53666B;
+  margin: 0 0 6px;
+  font-size: 22px;
+}
+
+.tab-content p {
+  font-size: 14px;
+  line-height: 1.24;
+  margin: 0 0 5px;
+  color: #24343a;
+}
+
+.tab-content ul,
+.tab-content ol {
+  margin: 4px 0 6px 20px;
+  padding: 0;
+}
+
+.tab-content li {
+  font-size: 14px;
+  line-height: 1.22;
+  margin-bottom: 3px;
+  color: #24343a;
+}
+
+.note,
+.info {
+  background: rgba(247,250,251,0.72);
+  border-left: 5px solid #6698AD;
+  padding: 8px 11px;
+  border-radius: 10px;
+  color: #24343a;
+  margin: 7px 0;
+  font-size: 14px;
+  line-height: 1.22;
+}
+
+.action-link {
+  display: inline-block;
+  background: #6698AD;
+  color: #12333a;
+  text-decoration: none;
+  border-radius: 999px;
+  padding: 7px 13px;
+  font-weight: bold;
+  font-size: 13.5px;
+  margin-top: 4px;
+}
+
+.action-link:hover {
+  background:  #B2C6D3;
+  color: #12333a;
+}
+
+.badge {
+  display: inline-block;
+  background: #1e7e8f;
+  color: white;
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-size: 12.5px;
+  margin-bottom: 4px;
+}
+
+
+/* Houdt de complete pagina exact 500 px hoog.
+   Het witte tekstvlak en het menu staan nog iets lager; de hoogte is gelijk gebleven. */
+.tab-wrapper {
+  width: min(1000px, 100%);
+  height: 500px;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.banner {
+  height: 145px;
+  min-height: 0;
+}
+
+.tab-page {
+  height: 355px;
+  min-height: 0;
+  align-items: flex-start;
+  padding: 40px 14px 14px 12px;
+  gap: 14px;
+  overflow: hidden;
+}
+
+.tab-menu {
+  flex: 0 0 205px;
+  width: 205px;
+  padding-left: 0;
+  overflow: hidden;
+}
+
+.tab-content-area {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 292px;
+  min-height: 0;
+  max-height: 292px;
+  overflow-y: hidden;
+  margin: 0;
+}
+
+.tab-button {
+  position: relative;
+  z-index: 3;
+}
+
+@media (max-width: 760px) {
+  .tab-page {
+    flex-direction: column;
+    padding: 0 12px 14px;
+  }
+
+  .tab-menu {
+    width: 100%;
+    flex: 0 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 8px 0 0;
+  }
+
+  .tab-button {
+    width: auto;
+    margin-bottom: 0;
+  }
+}
+
+</style>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body data-page="spl">
+
+<div class="tab-wrapper">
+
+  <section class="banner">
+    <h1>TOPdesk leermiddelen</h1>
+    <p>Je leert werken met TOPdesk: van meldingen registreren tot standaardoplossingen gebruiken, escaleren, wijzigingen verwerken en objecten koppelen.</p>
+
+    <div class="chips">
+      <span>🎧 Servicedesk</span>
+      <span>📝 Meldingen</span>
+      <span>🧩 TOPdesk</span>
+      <span>💻 Hardware & software</span>
+      <span>📁 Portfolio</span>
+    </div>
+  </section>
+
+  <div class="tab-page">
+    <div class="tab-menu">
+      <button class="tab-button active" onclick="openTab(event, 'start')">TOPdesk Start</button>
+      <button class="tab-button" onclick="openTab(event, 'topdesk01')">TOPdesk 01 gebruiken</button>
+      <button class="tab-button" onclick="openTab(event, 'topdesk02')">TOPdesk 02 meldingen</button>
+      <button class="tab-button" onclick="openTab(event, 'topdesk03')">TOPdesk 03 kennisitems</button>
+      <button class="tab-button" onclick="openTab(event, 'topdesk04')">TOPdesk 04 escaleren</button>
+      <button class="tab-button" onclick="openTab(event, 'topdesk05')">TOPdesk 05 wijzigingen</button>
+      <button class="tab-button" onclick="openTab(event, 'topdesk06')">TOPdesk 06 selfservice</button>
+      <button class="tab-button" onclick="openTab(event, 'topdesk07')">TOPdesk 07 configuraties</button>
+      <button class="tab-button" onclick="openTab(event, 'topdesk08')">TOPdesk 08 personen</button>
+      <button class="tab-button" onclick="openTab(event, 'portfolio')">Portfolio</button>
+    </div>
+
+    <div class="tab-content-area">
+
+      <div id="start" class="tab-content active">
+        <h2>TOPdesk Start</h2>
+        <p>De servicedesk is belangrijk in veel organisaties. Als ICT-voorzieningen niet goed werken, kan het werk stil komen te liggen.</p>
+        <p>Daarom moet een servicedesk goed georganiseerd zijn. TOPdesk helpt om meldingen, acties en oplossingen overzichtelijk vast te leggen.</p>
+        <ul>
+          <li>Je maakt kennis met de servicedesk.</li>
+          <li>Je ontdekt waarvoor TOPdesk wordt gebruikt.</li>
+          <li>Je ziet waarom goed registreren belangrijk is.</li>
+        </ul>
+        <p><a class="action-link" href="https://www.stichtingpraktijkleren.nl/fileadmin/spl_xapi/CODE-viYH96HB/index.html?coursedata=TOPdesk%20leermiddelen_2_TOPdesk%20START_xapi#/lang/en/pag/679d2e8d25e1be5336e90c14d03aa9f2" target="_blank" rel="noopener">Open TOPdesk Start</a></p>
+      </div>
+
+      <div id="topdesk01" class="tab-content">
+        <h2>TOPdesk 01 – TOPdesk gebruiken</h2>
+        <p>In TOPdesk registreer je meldingen en oplossingen. Je kunt ook hardware, software, personen, vestigingen en locaties vastleggen.</p>
+        <ul>
+          <li>Meldingen en oplossingen registreren.</li>
+          <li>Hardware- en softwareobjecten vastleggen.</li>
+          <li>Objecten koppelen aan personen of locaties.</li>
+        </ul>
+        <p><a class="action-link" href="https://www.stichtingpraktijkleren.nl/fileadmin/spl_xapi/CODE-glbhzmXr/index.html?coursedata=TOPdesk%20leermiddelen_3_1.%20TOPdesk%2001_xapi#/lang/en/pag/646195cf33d58cafb997b5e436109444" target="_blank" rel="noopener">Open TOPdesk 01</a></p>
+      </div>
+
+      <div id="topdesk02" class="tab-content">
+        <h2>TOPdesk 02 – Eerstelijnsmeldingen</h2>
+        <p>Een behandelaar registreert meldingen of calls die binnenkomen via telefoon, balie of e-mail.</p>
+        <p>Veel meldingen zijn incidenten of storingen. Gebruikers kunnen niet verder met hun werk en jij onderzoekt of je kunt helpen.</p>
+        <ul>
+          <li>Meldingen aannemen en registreren.</li>
+          <li>Incidenten en storingen herkennen.</li>
+          <li>Gebruikers helpen zodat ze verder kunnen.</li>
+        </ul>
+        <p><a class="action-link" href="https://www.stichtingpraktijkleren.nl/fileadmin/spl_xapi/CODE-YyEWmkSV/index.html?coursedata=TOPdesk%20leermiddelen_4_2.%20TOPdesk%2002_xapi#/lang/en/pag/21213bda1634ffe134703c4b041ccab9" target="_blank" rel="noopener">Open TOPdesk 02</a></p>
+      </div>
+
+      <div id="topdesk03" class="tab-content">
+        <h2>TOPdesk 03 – Standaardteksten en kennisitems</h2>
+        <p>Op een servicedesk komen vaak dezelfde vragen terug. Met standaardteksten, standaardoplossingen en kennisitems handel je meldingen sneller af.</p>
+        <ul>
+          <li>Standaardteksten gebruiken.</li>
+          <li>Standaardoplossingen toepassen.</li>
+          <li>Kennisitems zoeken en gebruiken.</li>
+          <li>Gebruikers sneller en duidelijker helpen.</li>
+        </ul>
+        <p><a class="action-link" href="https://www.stichtingpraktijkleren.nl/fileadmin/spl_xapi/CODE-fdKPMA6q/index.html?coursedata=TOPdesk%20leermiddelen_5_3.%20TOPdesk%2003_xapi#/lang/en/pag/edadff7d55f1b0fa2696a4d97b14cd9d" target="_blank" rel="noopener">Open TOPdesk 03</a></p>
+      </div>
+
+      <div id="topdesk04" class="tab-content">
+        <h2>TOPdesk 04 – Tweede lijn, derde lijn en majormeldingen</h2>
+        <p>Als eerstelijnsmedewerker kun je veel meldingen zelf afhandelen. Soms zet je de melding door naar de tweede of derde lijn.</p>
+        <ul>
+          <li>Herkennen wanneer je moet escaleren.</li>
+          <li>Meldingen doorzetten naar tweede of derde lijn.</li>
+          <li>Majormeldingen herkennen.</li>
+          <li>Escalaties goed registreren.</li>
+        </ul>
+        <p><a class="action-link" href="https://www.stichtingpraktijkleren.nl/fileadmin/spl_xapi/CODE-cM8BpnMh/index.html?coursedata=TOPdesk%20leermiddelen_6_4.%20TOPdesk%2004_xapi#/lang/en/pag/b00e0f038658aa4617f6f57b0d311d7f" target="_blank" rel="noopener">Open TOPdesk 04</a></p>
+      </div>
+
+      <div id="topdesk05" class="tab-content">
+        <h2>TOPdesk 05 – Eenvoudige wijzigingen</h2>
+        <p>IT-infrastructuur staat nooit stil. Hardware, software en organisaties veranderen regelmatig.</p>
+        <p>In TOPdesk leer je eenvoudige wijzigingen registreren en opvolgen.</p>
+        <ul>
+          <li>Wijzigingen herkennen.</li>
+          <li>Aanpassingen aan hardware of software registreren.</li>
+          <li>Wijzigingen netjes opvolgen.</li>
+        </ul>
+        <p><a class="action-link" href="https://www.stichtingpraktijkleren.nl/fileadmin/spl_xapi/CODE-rcm9DrYj/index.html?coursedata=TOPdesk%20leermiddelen_7_5.%20TOPdesk%2005_xapi#/lang/en/pag/69a2fda9a46e634104c7e586e1ddb655" target="_blank" rel="noopener">Open TOPdesk 05</a></p>
+      </div>
+
+      <div id="topdesk06" class="tab-content">
+        <h2>TOPdesk 06 – Selfserviceportal gebruiken</h2>
+        <p>In de selfserviceportal vinden gebruikers uitleg, handleidingen en oplossingen die zij zelf kunnen proberen.</p>
+        <ul>
+          <li>Handleidingen en uitleg gebruiken.</li>
+          <li>Gebruikers zelf meldingen laten invoeren.</li>
+          <li>Sneller en efficiënter storingen oplossen.</li>
+          <li>Tijd besparen voor de servicedesk.</li>
+        </ul>
+        <p><a class="action-link" href="https://www.stichtingpraktijkleren.nl/fileadmin/spl_xapi/CODE-JM3vEq7h/index.html?coursedata=TOPdesk%20leermiddelen_8_6.%20TOPdesk%2006_xapi#/lang/en/pag/78a633775bc994b5951e16a33dadb6d2" target="_blank" rel="noopener">Open TOPdesk 06</a></p>
+      </div>
+
+      <div id="topdesk07" class="tab-content">
+        <h2>TOPdesk 07 – Hardware, software en configuraties</h2>
+        <p>Medewerkers gebruiken hardware en software zoals pc’s, printers, mobiele telefoons en laptops.</p>
+        <p>In TOPdesk kun je objecten vastleggen, koppelen aan personen of vestigingen en groeperen in configuraties.</p>
+        <ul>
+          <li>Hardware- en softwareobjecten registreren.</li>
+          <li>Objecten koppelen aan personen of locaties.</li>
+          <li>Configuraties maken en beheren.</li>
+        </ul>
+        <p><a class="action-link" href="https://www.stichtingpraktijkleren.nl/fileadmin/spl_xapi/CODE-mteU1KZt/index.html?coursedata=TOPdesk%20leermiddelen_9_7.%20TOPdesk%2007_xapi#/lang/en/pag/632c013855442375e7443657e211488b" target="_blank" rel="noopener">Open TOPdesk 07</a></p>
+      </div>
+
+      <div id="topdesk08" class="tab-content">
+        <h2>TOPdesk 08 – Personen en behandelaars</h2>
+        <p>Als servicedeskmedewerker ben je behandelaar van meldingen. Tegelijk kun je ook als persoon in TOPdesk geregistreerd staan.</p>
+        <ul>
+          <li>Verschil tussen persoon en behandelaar begrijpen.</li>
+          <li>Behandelaars koppelen aan meldingen.</li>
+          <li>Persoonsgegevens netjes gebruiken in TOPdesk.</li>
+        </ul>
+        <p><a class="action-link" href="https://www.stichtingpraktijkleren.nl/fileadmin/spl_xapi/CODE-no39qMb4/index.html?coursedata=TOPdesk%20leermiddelen_10_8.%20TOPdesk%2008_xapi#/lang/en/pag/ed98fd5a693ab9d9722a8ea94b2cdee0" target="_blank" rel="noopener">Open TOPdesk 08</a></p>
+      </div>
+
+      <div id="portfolio" class="tab-content">
+        <h2>Portfolio-tip</h2>
+        <p>Laat in je portfolio zien dat je TOPdesk doelgericht kunt gebruiken. Bewaar bewijs van je voortgang en van de onderdelen die je hebt geoefend.</p>
+        <ul>
+          <li>Screenshots van gemaakte TOPdesk-modules.</li>
+          <li>Voorbeeld van een geregistreerde melding.</li>
+          <li>Voorbeeld van een standaardtekst of kennisitem.</li>
+          <li>Korte uitleg over escaleren of wijzigingen verwerken.</li>
+          <li>Reflectie: wat ging goed en wat wil je nog oefenen?</li>
+        </ul>
+        <p class="note"><strong>Belangrijk:</strong> TOPdesk draait om netjes registreren, duidelijk communiceren en overzicht houden.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+function openTab(event, tabId) {
+  document.querySelectorAll(".tab-content").forEach(function(content) {
+    content.classList.remove("active");
+  });
+
+  document.querySelectorAll(".tab-button").forEach(function(button) {
+    button.classList.remove("active");
+  });
+
+  document.getElementById(tabId).classList.add("active");
+  event.currentTarget.classList.add("active");
+}
+</script>
+
+</body>
+</html>

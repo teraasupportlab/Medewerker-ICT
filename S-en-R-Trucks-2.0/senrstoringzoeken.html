@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Storingzoeken - Windows 11 servicedesk</title>
+<style>
+:root{
+  --accent:#2F80ED; --accent-dark:#155FA8; --ink:#101828; --muted:#475467;
+  --glass:rgba(255,255,255,.78); --glass-strong:rgba(255,255,255,.90); --glass-border:rgba(255,255,255,.52);
+  --shadow:0 18px 46px rgba(0,0,0,.20); --radius-xl:24px; --radius-lg:20px;
+}
+*{box-sizing:border-box}
+html,body{width:100%;min-height:100%;margin:0;padding:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:transparent}
+body{display:grid;place-items:start center;overflow:hidden}
+.page-shell{width:min(1000px,100vw);height:500px;position:relative;overflow:hidden;border-radius:var(--radius-xl);
+  background:radial-gradient(circle at 18% 18%,rgba(255,255,255,.10) 0 16%,transparent 36%),radial-gradient(circle at 84% 78%,rgba(102,152,173,.42) 0 18%,transparent 42%),linear-gradient(135deg,#000 0%,#1a0f04 28%,#53666B 54%,var(--accent) 100%);
+  box-shadow:var(--shadow)}
+.page-shell:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.06) 0 1px,transparent 1px 80px),linear-gradient(0deg,rgba(255,255,255,.04) 0 1px,transparent 1px 80px);opacity:.28;pointer-events:none}
+.header{position:relative;z-index:1;height:112px;padding:13px 22px 6px;color:white;overflow:hidden}
+.header-row{display:flex;align-items:flex-start;gap:18px;justify-content:space-between}
+.header h1{margin:0;font-size:28px;line-height:1.04;color:white;white-space:nowrap;flex:0 0 auto}
+.header .tagline{margin:2px 0 0;font-size:13.3px;line-height:1.22;max-width:610px;color:white;font-weight:600}
+.badge{margin-left:auto;flex:0 0 auto;background:rgba(255,255,255,.88);color:#12333a;border-radius:999px;padding:8px 13px;font-size:12.5px;font-weight:850;box-shadow:0 2px 8px rgba(0,0,0,.14)}
+.header p{margin:6px 0 0;max-width:900px;font-size:13px;line-height:1.22;color:white}
+.chips{display:flex;gap:6px;flex-wrap:nowrap;margin-top:6px}
+.chips span{background:white;color:#12333a;border-radius:999px;padding:5px 9px;font-size:11.8px;white-space:nowrap;font-weight:700}
+.main{position:relative;z-index:1;height:388px;display:grid;grid-template-columns:205px 1fr;gap:14px;padding:12px 22px 18px;align-items:start}
+.menu{height:358px;overflow:hidden;padding-top:0}
+.menu button{width:100%;display:block;border:none;background:rgba(255,255,255,.14);color:white;text-align:left;padding:6px 10px;margin-bottom:5px;border-radius:11px;cursor:pointer;font-size:12.1px;font-weight:800;line-height:1.05;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.menu button:hover,.menu button.active{background:rgba(255,255,255,.90);color:#12333a}
+.panel{min-width:0;height:358px;overflow:hidden;background:var(--glass);border:1px solid var(--glass-border);border-left:8px solid var(--accent);border-radius:var(--radius-lg);box-shadow:0 14px 34px rgba(0,0,0,.14);backdrop-filter:blur(10px) saturate(125%);-webkit-backdrop-filter:blur(10px) saturate(125%);padding:15px 18px}
+.content{height:100%;overflow:hidden;padding-right:2px}
+.pill{display:inline-flex;align-items:center;gap:7px;width:fit-content;margin:0 0 7px;padding:6px 11px;border-radius:999px;background:var(--glass-strong);color:var(--accent-dark);font-size:12px;line-height:1;font-weight:850}
+h2{margin:0 0 6px;font-size:21px;line-height:1.06;color:var(--ink);font-weight:850;letter-spacing:-.02em}
+h3{margin:7px 0 5px;font-size:15px;color:#12333a}
+p,li{font-size:13.1px;line-height:1.20;color:#1f2937}
+p{margin:0 0 8px} ul,ol{margin:6px 0 8px 20px;padding:0}
+.note{background:rgba(255,255,255,.80);border-left:5px solid var(--accent-dark);padding:9px 11px;border-radius:12px;color:#1f2937;margin:8px 0;font-size:13.5px;line-height:1.28}
+.ticket{background:#f8fafc;color:#0f172a;border:1px solid rgba(15,23,42,.16);border-left:6px solid var(--accent-dark);border-radius:12px;padding:10px 12px;margin:8px 0 10px;font-size:13.1px;line-height:1.32}
+.ticket strong{color:#12333a}
+
+.simpletxt{background:#f8fafc;color:#0f172a;border:1px solid rgba(15,23,42,.14);border-left:6px solid var(--accent-dark);border-radius:12px;padding:10px 12px;margin:7px 0 8px;font-family:Arial,Helvetica,sans-serif;font-size:13.4px;line-height:1.30;white-space:pre-wrap}
+.simpletxt strong{color:#12333a}
+body.user-view .panel{height:314px;padding:12px 16px}
+body.user-view .menu{height:314px}
+body.user-view .main{height:344px}
+body.user-view .content{overflow:hidden}
+body.user-view h2{font-size:20px;margin-bottom:5px}
+body.user-view .pill{margin-bottom:5px;padding:5px 10px;font-size:11.5px}
+body.user-view .action-btn{display:inline-flex;padding:7px 12px;margin-top:2px;font-size:12.2px}
+body.user-view .simpletxt{font-size:12.2px;line-height:1.15;padding:8px 10px;margin:5px 0 4px}
+body.user-view .simpletxt strong{font-size:12.2px}
+
+body.intro-view .panel{height:258px;padding:12px 16px;border-radius:var(--radius-lg)}
+body.intro-view .content{overflow:hidden}
+body.intro-view h2{font-size:20px;margin-bottom:5px}
+body.intro-view .pill{margin-bottom:5px;padding:5px 10px;font-size:11.5px}
+body.intro-view .ticket{padding:7px 10px;margin:5px 0}
+body.intro-view p, body.intro-view li{font-size:12.8px;line-height:1.16}
+.ticket ul{background:transparent;border:0;margin:6px 0 2px 18px;padding:0}
+
+.assignmentbox{background:rgba(255,255,255,.78);border-left:5px solid var(--accent-dark);border-radius:13px;padding:8px 11px;margin:7px 0 6px}
+.assignmentbox h3{margin-top:0}
+
+body.assignment-view .panel{height:342px;padding-bottom:10px}
+body.assignment-view .content{overflow:hidden}
+body.assignment-view p{font-size:12.9px;line-height:1.14;margin-bottom:5px}
+body.assignment-view .assignmentbox{padding:6px 10px;margin:5px 0 4px}
+body.assignment-view .assignmentbox h3{font-size:14px;margin:0 0 3px}
+body.assignment-view .content ul.plain{padding:5px 9px 5px 24px;margin:4px 0}
+body.assignment-view .content li{font-size:12.7px;line-height:1.08;margin-bottom:2px}
+body.assignment-view .action-btn{padding:6px 11px;margin-top:4px;font-size:12.2px}
+.action-btn{display:inline-flex;align-items:center;border:none;background:var(--accent-dark);color:white;text-decoration:none;border-radius:999px;padding:8px 13px;font-weight:850;font-size:12.7px;cursor:pointer;margin:6px 8px 6px 0}
+.action-btn:hover{filter:brightness(.94)}
+.small{font-size:12.8px;color:#475467;margin-top:4px}
+.content ul.plain{background:rgba(255,255,255,.72);border-left:5px solid var(--accent-dark);border-radius:13px;padding:7px 10px 7px 26px;margin:6px 0}
+.content li{margin-bottom:3px}
+@media(max-width:760px){body{overflow:auto}.page-shell{width:100%;height:auto;border-radius:0}.header{height:auto}.main{height:auto;grid-template-columns:1fr}.panel{height:auto}.menu{height:auto}}
+.download-fallback{display:none;margin-top:8px;background:rgba(255,255,255,.82);border:1px solid rgba(15,23,42,.16);border-radius:12px;padding:8px}
+.download-fallback strong{display:block;color:#12333a;font-size:12px;margin-bottom:5px}
+.download-fallback textarea{width:100%;height:78px;border:1px solid rgba(15,23,42,.18);border-radius:9px;padding:7px;font-family:Consolas,"Courier New",monospace;font-size:11.5px;line-height:1.15;resize:none;background:#f8fafc}
+
+</style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="storingzoeken">
+<main class="page-shell" aria-label="Storingzoeken Windows 11">
+  <section class="header">
+    <div class="header-row">
+      <div>
+        <h1>Storingzoeken</h1>
+        <p class="tagline">Servicedesk-opdracht met Windows 11-images. Elke gebruiker meldt vijf problemen.</p>
+      </div>
+      <div class="badge">Acronis image terugzetten</div>
+    </div>
+    <p>Lees de melding alsof je bij de servicedesk werkt. Onderzoek de laptop, los de storingen op en verzamel bewijs voor je portfolio.</p>
+    <div class="chips"><span>🧰 Acronis</span><span>💻 Windows 11</span><span>☎️ Servicedesk</span><span>📁 Portfolio</span><span>🖼️ Screenshots</span></div>
+  </section>
+  <section class="main">
+    <nav class="menu" id="stepMenu"></nav>
+    <article class="panel"><div class="content" id="content"></div></article>
+  </section>
+</main>
+<script>
+const items = [
+  {
+    id: "intro",
+    menuLabel: "Inleiding",
+    title: "Inleiding - storingzoeken met Windows 11-images",
+    image: "Inleiding",
+    user: "Servicedesk",
+    story: "Bij deze opdracht oefen je storingzoeken op een Windows 11-systeem. De storing staat klaar in een image. Die image wordt met Acronis teruggezet op de Dell 3950. Daarna onderzoek je de melding, los je de problemen op en verzamel je bewijs voor je portfolio.",
+    how: [
+      "Kies links eerst de opdracht of een gebruiker.",
+      "Zet de juiste Acronis-image terug op de Dell 3950.",
+      "Lees de melding alsof je bij de servicedesk werkt.",
+      "Onderzoek de laptop stap voor stap.",
+      "Los de storingen op en test of alles weer werkt."
+    ]
+  },
+  {
+    id: "opdracht",
+    menuLabel: "Opdracht",
+    title: "Opdracht - servicedesk en portfolio",
+    image: "Opdracht",
+    user: "Opdracht",
+    story: "Je werkt vandaag als medewerker servicedesk. Er is een Windows 11-laptop binnengekomen met vijf meldingen van een gebruiker. De gebruiker weet niet wat er technisch fout staat. Jij onderzoekt de laptop, lost de storingen op en maakt bewijs voor je portfolio.",
+    assignment: [
+      "Download de tekst van de gebruiker die je gaat helpen.",
+      "Beschrijf per melding wat de gebruiker merkt.",
+      "Onderzoek waar de oorzaak kan zitten.",
+      "Noteer wat de echte oorzaak was.",
+      "Beschrijf wat je hebt aangepast om het probleem op te lossen.",
+      "Maak screenshots van onderzoek, oplossing en eindtest.",
+      "Zet het tekstbestand en je screenshots in je portfolio."
+    ]
+  },
+  {
+    id: "gebruiker1",
+    menuLabel: "Sanne Verhoeven",
+    title: "Sanne Verhoeven - melding bij de servicedesk",
+    image: "W11_Storingen_Gebruiker_01.tib",
+    user: "Sanne Verhoeven",
+    story: "Sanne komt aan het begin van de les bij de servicedesk. Ze zegt dat haar laptop vandaag vreemd doet. Ze kan niet op wifi, sommige tekens op het toetsenbord kloppen niet, printen lukt niet, Teams start niet vanzelf op en Windows geeft aan dat de opslag bijna vol is.",
+    faults: [
+      "Ik krijg geen verbinding met wifi.",
+      "Als ik speciale tekens typ, komen er andere tekens in beeld.",
+      "Mijn document komt niet uit de printer.",
+      "Teams start niet automatisch als ik inlog.",
+      "Windows meldt dat mijn opslag bijna vol is."
+    ]
+  },
+  {
+    id: "gebruiker2",
+    menuLabel: "Youssef El Amrani",
+    title: "Youssef El Amrani - melding bij de servicedesk",
+    image: "W11_Storingen_Gebruiker_02.tib",
+    user: "Youssef El Amrani",
+    story: "Youssef meldt dat hij niet normaal verder kan werken. Zijn laptop lijkt geen verbinding te maken, de datum en tijd kloppen niet, zijn USB-stick verschijnt niet in Verkenner, Word start via de snelkoppeling niet goed op en OneDrive synchroniseert niet.",
+    faults: [
+      "Mijn laptop lijkt helemaal geen netwerk te gebruiken.",
+      "De datum en tijd kloppen niet meer.",
+      "Mijn USB-stick verschijnt niet in Verkenner.",
+      "De snelkoppeling naar Word werkt niet goed.",
+      "OneDrive synchroniseert mijn bestanden niet."
+    ]
+  },
+  {
+    id: "gebruiker3",
+    menuLabel: "Mila Janssen",
+    title: "Mila Janssen - melding bij de servicedesk",
+    image: "W11_Storingen_Gebruiker_03.tib",
+    user: "Mila Janssen",
+    story: "Mila wil haar laptop gebruiken voor een presentatie, maar er gaat van alles mis. Internet werkt niet, het beeld ziet er vreemd uit, het tweede scherm komt niet in beeld, de browser opent steeds met een verkeerde pagina en aanmelden met pincode lukt niet goed.",
+    faults: [
+      "Internet doet niets, ook niet na opnieuw proberen.",
+      "Het beeldscherm ziet er veel te groot of onscherp uit.",
+      "Mijn tweede scherm wordt niet goed gebruikt.",
+      "Mijn browser opent steeds met een verkeerde startpagina.",
+      "Aanmelden met mijn pincode lukt niet goed."
+    ]
+  },
+  {
+    id: "gebruiker4",
+    menuLabel: "Daan de Vries",
+    title: "Daan de Vries - melding bij de servicedesk",
+    image: "W11_Storingen_Gebruiker_04.tib",
+    user: "Daan de Vries",
+    story: "Daan stuurt een ticket naar de servicedesk. Hij is verbonden met het netwerk, maar websites laden niet goed. PDF-bestanden openen in een vreemd programma, zijn Bluetooth-oortjes verbinden niet, Windows Update staat gepauzeerd en Windows-beveiliging toont een melding.",
+    faults: [
+      "Ik ben verbonden met het netwerk, maar websites laden niet goed.",
+      "PDF-bestanden openen in het verkeerde programma.",
+      "Mijn Bluetooth-oortjes verbinden niet meer.",
+      "Windows zegt dat updates gepauzeerd zijn.",
+      "Ik zie een melding van Windows-beveiliging."
+    ]
+  },
+  {
+    id: "gebruiker5",
+    menuLabel: "Noor Bakker",
+    title: "Noor Bakker - melding bij de servicedesk",
+    image: "W11_Storingen_Gebruiker_05.tib",
+    user: "Noor Bakker",
+    story: "Noor komt langs met haar laptop. Ze heeft verbinding met het netwerk, maar internet werkt niet zoals het hoort. Printen gaat naar de verkeerde printer, geluid komt niet uit haar headset, een programma blijft hangen en ze is een belangrijk bestand kwijt.",
+    faults: [
+      "Ik heb netwerkverbinding, maar internet werkt niet goed.",
+      "Mijn printopdracht gaat naar de verkeerde printer.",
+      "Ik hoor geen geluid via mijn headset.",
+      "Een programma reageert niet meer.",
+      "Ik kan een belangrijk bestand niet terugvinden."
+    ]
+  },
+  {
+    id: "gebruiker6",
+    menuLabel: "Lars Peters",
+    title: "Lars Peters - melding bij de servicedesk",
+    image: "W11_Storingen_Gebruiker_06.tib",
+    user: "Lars Peters",
+    story: "Lars meldt dat zijn laptop wel werkt, maar vreemd staat ingesteld. Het netwerkprofiel lijkt anders dan normaal, alles op het scherm is veel te groot, zijn microfoon werkt niet in online lessen, een snelkoppeling doet niets en hij krijgt steeds vervelende browsermeldingen.",
+    faults: [
+      "Mijn netwerk staat anders ingesteld dan normaal.",
+      "Alles op mijn scherm is veel te groot.",
+      "Mijn microfoon werkt niet in online lessen.",
+      "Een snelkoppeling naar een programma doet niets.",
+      "Ik krijg steeds ongewenste browsermeldingen."
+    ]
+  },
+  {
+    id: "gebruiker7",
+    menuLabel: "Emma van Dijk",
+    title: "Emma van Dijk - melding bij de servicedesk",
+    image: "W11_Storingen_Gebruiker_07.tib",
+    user: "Emma van Dijk",
+    story: "Emma meldt dat haar laptop het wifi-netwerk niet meer vanzelf vindt. Het scherm gaat steeds snel uit, de camera werkt niet, in Teams hoort niemand haar goed en ze kan een bestand niet verwijderen, ook al probeert ze het meerdere keren.",
+    faults: [
+      "Mijn laptop verbindt niet meer vanzelf met wifi.",
+      "Mijn scherm gaat veel te snel uit.",
+      "Mijn camera werkt niet.",
+      "In Teams hoort niemand mij goed.",
+      "Ik kan een bestand niet verwijderen."
+    ]
+  },
+  {
+    id: "gebruiker8",
+    menuLabel: "Ravi Singh",
+    title: "Ravi Singh - melding bij de servicedesk",
+    image: "W11_Storingen_Gebruiker_08.tib",
+    user: "Ravi Singh",
+    story: "Ravi meldt dat internet vreemd doet. Sommige pagina's laden helemaal niet. Verkenner ziet er anders uit dan normaal, de muis beweegt veel te snel of juist bijna niet, links openen in de verkeerde browser en hij ziet rare pop-ups of een onbekende extensie.",
+    faults: [
+      "Sommige webpagina's laden helemaal niet.",
+      "Verkenner ziet er anders uit dan normaal.",
+      "Mijn muis beweegt veel te snel of juist bijna niet.",
+      "Links openen in de verkeerde browser.",
+      "Ik zie rare pop-ups of een onbekende extensie."
+    ]
+  }
+];
+
+const defaultAssignment = [
+  "Beschrijf per melding wat de gebruiker merkt.",
+  "Onderzoek waar de oorzaak kan zitten.",
+  "Los de storing op zonder onnodige instellingen te veranderen.",
+  "Maak screenshots van onderzoek, oplossing en eindtest.",
+  "Zet de gedownloade tekst en je screenshots in je portfolio."
+];
+
+function escapeHTML(text){return String(text).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));}
+function fillMenu(){
+  document.getElementById("stepMenu").innerHTML = items.map((item,i)=>`<button class="${i===0?'active':''}" onclick="loadItem(${i})">${escapeHTML(item.menuLabel)}</button>`).join("");
+}
+function makeWhiteText(item){
+  let simple = `Melding van ${item.user}:
+${item.story}
+
+${item.user} meldt deze 5 problemen:
+`;
+  simple += item.faults.map((f,i)=>`${i+1}. ${item.user}: ${f}`).join("\n");
+  return simple;
+}
+function makeAssignmentTxt(){
+  const item = items.find(x => x.id === "opdracht") || items[1];
+  const assignment = item.assignment || defaultAssignment;
+  let txt = "OPDRACHT STORINGZOEKEN WINDOWS 11\n";
+  txt += "================================\n\n";
+  txt += item.story + "\n\n";
+  txt += "Opdracht:\n";
+  assignment.forEach((a,i)=>{ txt += (i+1) + ". " + a + "\n"; });
+  return txt;
+}
+function loadItem(index){
+  document.querySelectorAll("#stepMenu button").forEach((b,i)=>b.classList.toggle("active",i===index));
+  const item = items[index];
+  const assignment = item.assignment || defaultAssignment;
+  document.body.classList.toggle("user-view", item.id !== "intro" && item.id !== "opdracht");
+  document.body.classList.toggle("intro-view", item.id === "intro");
+  document.body.classList.toggle("assignment-view", item.id === "opdracht");
+  let html = `<span class="pill">${escapeHTML(item.image)}</span><h2>${escapeHTML(item.title)}</h2>`;
+  if(item.id === "intro"){
+    html += `<p>${escapeHTML(item.story)}</p>`;
+    html += `<div class="ticket"><strong>Hoe werkt het?</strong><ul>`;
+    html += (item.how || item.faults || []).map(f=>`<li>${escapeHTML(f)}</li>`).join("");
+    html += `</ul></div>`;
+  } else if(item.id === "opdracht"){
+    html += `<p>${escapeHTML(item.story)}</p>`;
+    html += `<div class="assignmentbox"><h3>Opdracht</h3><ul class="plain">` + assignment.map(a=>`<li>${escapeHTML(a)}</li>`).join("") + `</ul>`;
+    html += `<button type="button" class="action-btn" onclick="downloadAssignment()">Download opdracht als tekstbestand</button><div id="downloadFallback" class="download-fallback"></div></div>`;
+  } else {
+    const simple = makeWhiteText(item);
+    html += `<div class="simpletxt">${escapeHTML(simple)}</div>`;
+    html += `<button type="button" class="action-btn" onclick="downloadTxt('${item.id}')">Download tekstvlak</button><div id="downloadFallback" class="download-fallback"></div>`;
+  }
+  document.getElementById("content").innerHTML = html;
+}
+function makeTxt(item){
+  if(item.id === "opdracht") return makeAssignmentTxt();
+  if(item.id !== "intro") return makeWhiteText(item);
+  return "";
+}
+function showDownloadFallback(filename, text){
+  const box = document.getElementById("downloadFallback");
+  if(!box) return;
+  box.style.display = "block";
+  box.innerHTML = `<strong>Geen download gezien? Kopieer deze tekst en sla hem op als: ${escapeHTML(filename)}</strong><textarea readonly>${escapeHTML(text)}</textarea>`;
+  const ta = box.querySelector("textarea");
+  if(ta){ ta.focus(); ta.select(); }
+}
+function downloadTextFile(filename, text){
+  const blob = new Blob([text], {type:"text/plain;charset=utf-8"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(a.href);
+}
+
+function safeFilename(text){
+  return String(text)
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "_")
+    .replace(/^_+|_+$/g, "") || "melding";
+}
+
+function downloadAssignment(){
+  downloadTextFile("opdracht_storingzoeken_windows11.txt", makeAssignmentTxt());
+}
+function downloadTxt(id){
+  const item = items.find(function(x){ return x.id === id; });
+  if(!item) return;
+  const naam = safeFilename(item.user);
+  downloadTextFile(naam + "_servicedeskmelding.txt", makeTxt(item));
+}
+fillMenu();
+loadItem(0);
+</script>
+</body>
+</html>
