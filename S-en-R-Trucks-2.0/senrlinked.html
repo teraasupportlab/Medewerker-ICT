@@ -255,10 +255,28 @@
 
 </style>
 <link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+/* De bestaande 1000 x 500-layout wordt als geheel geschaald naar het venster. */
+html, body { width: 100%; height: 100%; margin: 0; padding: 0; overflow: hidden; }
+.fit-viewport { position: relative; width: 100vw; height: 100vh; height: 100dvh; overflow: hidden; }
+.fit-viewport > .tab-wrapper {
+  position: absolute; width: 1000px !important; height: 500px !important;
+  min-width: 1000px; max-width: none; margin: 0;
+  transform-origin: top left;
+}
+/* Behoud het oorspronkelijke tweekolommenmenu, ook in een smal iframe. */
+@media (max-width: 760px) {
+  .tab-page { flex-direction: row; padding: 40px 14px 14px 12px; }
+  .tab-menu { flex: 0 0 205px; width: 205px; display: block; padding: 0; }
+  .tab-button { width: 100%; margin-bottom: 4px; }
+}
+</style>
 </head>
 
 <body data-page="linked">
 
+<div class="fit-viewport">
 <div class="tab-wrapper">
 
   <section class="banner">
@@ -353,8 +371,21 @@
     </div>
   </div>
 </div>
+</div>
 
 <script>
+function fitPage() {
+  const viewport = document.querySelector('.fit-viewport');
+  const page = viewport.querySelector('.tab-wrapper');
+  const width = viewport.clientWidth;
+  const height = viewport.clientHeight;
+  const scale = Math.min(width / 1000, height / 500);
+  page.style.transform = `scale(${scale})`;
+  page.style.left = `${(width - 1000 * scale) / 2}px`;
+  page.style.top = `${(height - 500 * scale) / 2}px`;
+}
+window.addEventListener('resize', fitPage);
+window.addEventListener('DOMContentLoaded', fitPage);
 function openTab(event, tabId) {
   document.querySelectorAll(".tab-content").forEach(function(content) {
     content.classList.remove("active");
