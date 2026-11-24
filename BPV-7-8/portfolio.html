@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>BPV - Startpagina</title>
+  <title>BPV Portfolio</title>
   <style>
     :root {
       --teraa-orange: #E5E5E5;
@@ -227,12 +227,12 @@
       color: #111827;
     }
 
-
   </style>
 <link rel="stylesheet" href="style.css">
 <style>
-html, body[data-page="beroepsproject"] { margin:0; padding:0; width:100%; height:100%; overflow:hidden; }
-body[data-page="beroepsproject"] > .page-shell { width:1000px; height:500px; max-width:none; max-height:none; margin:0 auto; transform-origin:top left; }
+html, body[data-page="beroepsproject"] { width:100%; height:100%; margin:0; padding:0; overflow:hidden; }
+body[data-page="beroepsproject"] { display:block; position:relative; }
+body[data-page="beroepsproject"] > .page-shell { position:absolute; top:0; left:0; width:1000px; height:500px; min-width:0; min-height:0; max-width:none; max-height:none; margin:0; border-radius:0; transform-origin:top left; transform:scale(var(--bpv-scale-x,1),var(--bpv-scale-y,1)); }
 </style>
 </head>
 <body data-page="beroepsproject">
@@ -291,13 +291,19 @@ body[data-page="beroepsproject"] > .page-shell { width:1000px; height:500px; max
     </section>
   </main>
 <script>
-const shell = document.querySelector('.page-shell');
-function fitPage() {
-  const s = Math.min(1, document.documentElement.clientWidth / 1000, document.documentElement.clientHeight / 500);
-  shell.style.setProperty('zoom', String(s));
-}
-window.addEventListener('resize', fitPage);
-fitPage();
+(function () {
+  function fit() {
+    var w = document.documentElement.clientWidth;
+    var h = document.documentElement.clientHeight;
+    if (w > 0 && h > 0) {
+      document.documentElement.style.setProperty('--bpv-scale-x', w/1000);
+      document.documentElement.style.setProperty('--bpv-scale-y', h/500);
+    }
+  }
+  window.addEventListener('resize', fit);
+  window.addEventListener('load', fit);
+  fit();
+})();
 </script>
 </body>
 </html>
