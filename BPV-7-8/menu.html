@@ -6,13 +6,7 @@
 <title>BPV - Menu</title>
 <link rel="stylesheet" href="style.css">
 
-<style>
-/* Only the portfolio popup: no surrounding white gutters. */
-#pageModal.portfolio-open { padding:0 !important; }
-#pageModal.portfolio-open .page-modal__window { position:relative !important; width:100% !important; height:100% !important; max-width:none !important; max-height:none !important; margin:0 !important; padding:0 !important; border:0 !important; border-radius:0 !important; box-sizing:border-box !important; overflow:hidden !important; }
-#pageModal.portfolio-open .page-modal__frame { position:absolute !important; inset:0 !important; display:block !important; width:100% !important; height:100% !important; max-width:none !important; max-height:none !important; margin:0 !important; padding:0 !important; border:0 !important; }
-#pageModal.portfolio-open .page-modal__close { z-index:10 !important; }
-</style>
+
 </head>
 <body class="menu-page all-connected-menu">
 <main class="page-shell" aria-label="Menu BPV"><section class="content-grid">
@@ -31,8 +25,8 @@
 <script>
 const modal=document.getElementById('pageModal'), frame=modal.querySelector('iframe'), closeButton=modal.querySelector('button');
 let opener=null;
-function closeModal(){modal.classList.remove('is-open','portfolio-open');modal.setAttribute('aria-hidden','true');frame.src='about:blank';opener?.focus();}
-document.querySelectorAll('.popup-link').forEach(link=>link.addEventListener('click',event=>{event.preventDefault();opener=link;modal.classList.toggle('portfolio-open',link.getAttribute('href')==='portfolio.html');frame.src=link.href;modal.classList.add('is-open');modal.setAttribute('aria-hidden','false');closeButton.focus();}));
+function closeModal(){modal.classList.remove('is-open');modal.setAttribute('aria-hidden','true');frame.src='about:blank';opener?.focus();}
+document.querySelectorAll('.popup-link').forEach(link=>link.addEventListener('click',event=>{event.preventDefault();opener=link;frame.src=link.href;modal.classList.add('is-open');modal.setAttribute('aria-hidden','false');closeButton.focus();}));
 closeButton.addEventListener('click',closeModal);
 modal.addEventListener('click',event=>{if(event.target===modal)closeModal();});
 function escapeClose(event){if(event.key==='Escape'&&modal.classList.contains('is-open'))closeModal();}
